@@ -16,6 +16,7 @@ public class CompanyServiceImpl implements CompanyService{
         PageHelper.startPage(currentPage, pageSize);
         List<Company> companies = mapper.findAll();
         PageInfo<Company> pageInfo = new PageInfo<>(companies);
+        MapperUtil.close();
         return pageInfo;
     }
 }

@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
-@WebServlet("/Company")
+@WebServlet("/store/company")
 public class CompanyController extends HttpServlet {
     private CompanyService companyService = new CompanyServiceImpl();
 
