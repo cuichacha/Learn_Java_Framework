@@ -19,4 +19,36 @@ public class CompanyServiceImpl implements CompanyService{
         MapperUtil.close();
         return pageInfo;
     }
+
+    @Override
+    public Company findById(String id) {
+        CompanyDao mapper = MapperUtil.getMapper(CompanyDao.class, true);
+        Company company = mapper.findById(id);
+        MapperUtil.close();
+        return company;
+    }
+
+    @Override
+    public Integer add(Company company) {
+        CompanyDao mapper = MapperUtil.getMapper(CompanyDao.class, true);
+        Integer result = mapper.save(company);
+        MapperUtil.close();
+        return result;
+    }
+
+    @Override
+    public Integer update(Company company) {
+        CompanyDao mapper = MapperUtil.getMapper(CompanyDao.class, true);
+        Integer result = mapper.update(company);
+        MapperUtil.close();
+        return result;
+    }
+
+    @Override
+    public Integer delete(String id) {
+        CompanyDao mapper = MapperUtil.getMapper(CompanyDao.class, true);
+        Integer result = mapper.delete(id);
+        MapperUtil.close();
+        return result;
+    }
 }
