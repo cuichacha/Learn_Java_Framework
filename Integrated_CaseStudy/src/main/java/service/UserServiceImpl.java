@@ -1,0 +1,46 @@
+package service;
+
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import dao.UserDao;
+import domain.User;
+import utils.MapperUtil;
+
+import java.util.List;
+
+public class UserServiceImpl implements UserService {
+    @Override
+    public PageInfo<User> findByPage(Integer currentPage, Integer pageSize) {
+        UserDao mapper = MapperUtil.getMapper(UserDao.class, true);
+        PageHelper.startPage(currentPage, pageSize);
+        List<User> users = mapper.findAll();
+        PageInfo<User> pageInfo = new PageInfo<>(users);
+        return pageInfo;
+    }
+
+    @Override
+    public User findById(String id) {
+        UserDao mapper = MapperUtil.getMapper(UserDao.class, true);
+        User user = mapper.findById(id);
+        MapperUtil.close();
+        return user;
+    }
+
+    @Override
+    public Integer save(User user) {
+        UserDao mapper = MapperUtil.getMapper(UserDao.class, true);
+        Integer result = mapper.save(user);
+        MapperUtil.close();
+        return result;
+    }
+
+    @Override
+    public Integer update(User user) {
+        return null;
+    }
+
+    @Override
+    public Integer delete(String id) {
+        return null;
+    }
+}

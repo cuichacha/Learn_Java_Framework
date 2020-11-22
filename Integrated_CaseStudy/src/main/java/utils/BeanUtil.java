@@ -65,7 +65,7 @@ public class BeanUtil {
 			DateConverter converter = new DateConverter();
 			converter.setPattern(datePattern);
 			//4.设置转换器
-			ConvertUtils.register(converter, Date .class);
+			ConvertUtils.register(converter, Date.class);
 			//5.使用BeanUtils的方法进行封装
 			BeanUtils.populate(bean, request.getParameterMap());
 			//6.返回

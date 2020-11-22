@@ -1,6 +1,5 @@
 package dao;
 
-import domain.Company;
 import domain.Dept;
 
 import java.util.List;

@@ -1,3 +1,4 @@
+domain/User.class
 service/DeptServiceImpl.class
 utils/ParseUtil.class
 domain/Company.class
@@ -7,7 +8,11 @@ service/DeptService.class
 web/controller/CompanyController.class
 dao/CompanyDao.class
 utils/MapperUtil.class
+service/UserServiceImpl.class
 dao/DeptDao.class
+web/controller/UserController.class
+service/UserService.class
 web/controller/DeptController.class
+dao/UserDao.class
 service/CompanyServiceImpl.class
 service/CompanyService.class
