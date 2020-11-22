@@ -1,7 +1,13 @@
+service/DeptServiceImpl.class
+utils/ParseUtil.class
+domain/Company.class
+domain/Dept.class
+utils/BeanUtil.class
+service/DeptService.class
+web/controller/CompanyController.class
 dao/CompanyDao.class
 utils/MapperUtil.class
-domain/Company.class
-utils/BeanUtil.class
+dao/DeptDao.class
+web/controller/DeptController.class
 service/CompanyServiceImpl.class
-web/controller/CompanyController.class
 service/CompanyService.class

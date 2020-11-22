@@ -18,6 +18,7 @@ import java.util.UUID;
 @WebServlet("/store/company")
 public class CompanyController extends HttpServlet {
     private CompanyService companyService = new CompanyServiceImpl();
+//    private CompanyController companyController = new CompanyController();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -93,5 +94,6 @@ public class CompanyController extends HttpServlet {
 //        Company company = companyService.findById(id);
         Integer result = companyService.delete(id);
         list(req, resp);
+
     }
 }
