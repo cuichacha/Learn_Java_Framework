@@ -29,7 +29,10 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public Dept findById(String id) {
-        return null;
+        DeptDao mapper = MapperUtil.getMapper(DeptDao.class, true);
+        Dept dept = mapper.findById(id);
+        MapperUtil.close();
+        return dept;
     }
 
     @Override
@@ -42,11 +45,17 @@ public class DeptServiceImpl implements DeptService {
 
     @Override
     public Integer update(Dept dept) {
-        return null;
+        DeptDao mapper = MapperUtil.getMapper(DeptDao.class, true);
+        Integer result = mapper.update(dept);
+        MapperUtil.close();
+        return result;
     }
 
     @Override
     public Integer delete(String id) {
-        return null;
+        DeptDao mapper = MapperUtil.getMapper(DeptDao.class, true);
+        Integer result = mapper.delete(id);
+        MapperUtil.close();
+        return result;
     }
 }

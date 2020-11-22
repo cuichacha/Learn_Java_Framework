@@ -5,6 +5,7 @@ import domain.Company;
 import service.CompanyService;
 import service.CompanyServiceImpl;
 import utils.BeanUtil;
+import utils.ParseUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -33,6 +34,7 @@ public class CompanyController extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
     }
 
     @Override

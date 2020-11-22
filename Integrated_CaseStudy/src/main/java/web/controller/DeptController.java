@@ -6,6 +6,7 @@ import domain.Dept;
 import service.DeptService;
 import service.DeptServiceImpl;
 import utils.BeanUtil;
+import utils.ParseUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -23,17 +24,7 @@ public class DeptController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        resp.setContentType("text/html; charset=UTF-8");
-        String operation = req.getParameter("operation");
-
-        try {
-            Method declaredMethod = this.getClass().getDeclaredMethod(operation, HttpServletRequest.class, HttpServletResponse.class);
-            declaredMethod.setAccessible(true);
-            declaredMethod.invoke(this, req, resp);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        ParseUtil.parse(req,resp,this);
     }
 
     @Override
@@ -54,6 +45,7 @@ public class DeptController extends HttpServlet {
         req.getRequestDispatcher("/WEB-INF/dept/list.jsp").forward(req,resp);
     }
 
+
     private void toAdd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         List<Dept> deptList = deptService.findAll();
         req.setAttribute("deptList", deptList);
@@ -64,6 +56,27 @@ public class DeptController extends HttpServlet {
         Dept dept = BeanUtil.fillBean(req, Dept.class);
         dept.setId(UUID.randomUUID().toString());
         deptService.save(dept);
+        list(req, resp);
+    }
+
+    private void toEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        Dept dept = deptService.findById(id);
+        req.setAttribute("dept", dept);
+        List<Dept> deptList = deptService.findAll();
+        req.setAttribute("deptList", deptList);
+        req.getRequestDispatcher("/WEB-INF/dept/update.jsp").forward(req,resp);
+    }
+
+    private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Dept dept = BeanUtil.fillBean(req, Dept.class);
+        deptService.update(dept);
+        list(req, resp);
+    }
+
+    private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        deptService.delete(id);
         list(req, resp);
     }
 }
