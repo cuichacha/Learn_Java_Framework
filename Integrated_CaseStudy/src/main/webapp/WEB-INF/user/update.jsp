@@ -44,12 +44,12 @@
 
                     <div class="col-md-2 title">邮箱</div>
                     <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="邮箱" name="email" value="${user.email}">
+                        <input type="text" readonly class="form-control" placeholder="邮箱" name="email" value="${user.email}">
                     </div>
 
                     <div class="col-md-2 title">密码</div>
                     <div class="col-md-4 data">
-                        <input type="text" class="form-control" placeholder="密码" name="password" value="${user.password}">
+                        <input type="text" readonly class="form-control" placeholder="密码" name="password" value="${user.password}">
                     </div>
 
                     <div class="col-md-2 title">姓名</div>

@@ -8,6 +8,7 @@ import service.DeptServiceImpl;
 import service.UserService;
 import service.UserServiceImpl;
 import utils.BeanUtil;
+import utils.MD5Util;
 import utils.ParseUtil;
 
 import javax.servlet.ServletException;
@@ -78,6 +79,29 @@ public class UserController extends HttpServlet {
         User user = BeanUtil.fillBean(req, User.class, "yyyy-MM-dd");
         user.setId(UUID.randomUUID().toString());
         userService.save(user);
+        list(req, resp);
+    }
+
+    private void toEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        User user = userService.findById(id);
+        user.setPassword(MD5Util.md5(user.getPassword()));
+        req.setAttribute("user", user);
+        DeptService deptService = new DeptServiceImpl();
+        List<Dept> departments = deptService.findAll();
+        req.setAttribute("deptList", departments);
+        req.getRequestDispatcher("/WEB-INF/user/update.jsp").forward(req, resp);
+    }
+
+    private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        User user = BeanUtil.fillBean(req, User.class, "yyyy-MM-dd");
+        userService.update(user);
+        list(req, resp);
+    }
+
+    private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String id = req.getParameter("id");
+        userService.delete(id);
         list(req, resp);
     }
 }

@@ -82,6 +82,8 @@
                             </div>
                             <input type="text" placeholder="出生年月" class="form-control pull-right" name="birthday"
                                    value="${requestScope.user.birthday}" id="datepicker1">
+<%--                                   value="<fmt:formatDate value="${requestScope.user.birthday}" pattern="yyyy-MM-dd"/>" --%>
+                                   id="datepicker1">
                         </div>
                     </div>
 

@@ -36,11 +36,17 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Integer update(User user) {
-        return null;
+        UserDao mapper = MapperUtil.getMapper(UserDao.class, true);
+        Integer result = mapper.update(user);
+        MapperUtil.close();
+        return result;
     }
 
     @Override
     public Integer delete(String id) {
-        return null;
+        UserDao mapper = MapperUtil.getMapper(UserDao.class, true);
+        Integer result = mapper.delete(id);
+        MapperUtil.close();
+        return result;
     }
 }

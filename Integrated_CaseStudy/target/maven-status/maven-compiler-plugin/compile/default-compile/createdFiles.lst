@@ -1,5 +1,6 @@
 domain/User.class
 service/DeptServiceImpl.class
+utils/MD5Util.class
 utils/ParseUtil.class
 domain/Company.class
 domain/Dept.class
