@@ -7,6 +7,7 @@
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/dao/CompanyDao.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/utils/MapperUtil.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/service/CourseServiceImpl.java
+/Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/web/controller/CatalogController.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/service/CourseService.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/dao/CourseDao.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/dao/DeptDao.java
@@ -17,10 +18,13 @@
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/utils/ParseUtil.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/service/DeptServiceImpl.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/web/controller/DeptController.java
+/Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/service/CatalogService.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/utils/BeanUtil.java
+/Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/service/CatalogServiceImpl.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/service/UserServiceImpl.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/web/controller/CourseController.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/service/DeptService.java
+/Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/dao/CatalogDao.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/web/controller/CompanyController.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/dao/UserDao.java
 /Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/src/main/java/domain/QuestionItem.java

@@ -2,6 +2,7 @@ domain/Company.class
 domain/Catalog.class
 domain/Dept.class
 service/CourseServiceImpl.class
+dao/CatalogDao.class
 service/CourseService.class
 dao/CompanyDao.class
 utils/MapperUtil.class
@@ -10,11 +11,13 @@ dao/DeptDao.class
 web/controller/UserController.class
 web/controller/DeptController.class
 dao/UserDao.class
+web/controller/CatalogController.class
 domain/User.class
 dao/CourseDao.class
 service/DeptServiceImpl.class
 utils/MD5Util.class
 utils/ParseUtil.class
+service/CatalogService.class
 domain/QuestionItem.class
 domain/Course.class
 utils/BeanUtil.class
@@ -25,3 +28,4 @@ service/UserService.class
 service/CompanyServiceImpl.class
 web/controller/CourseController.class
 service/CompanyService.class
+service/CatalogServiceImpl.class

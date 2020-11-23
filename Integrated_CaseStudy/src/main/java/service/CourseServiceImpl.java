@@ -21,6 +21,14 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
+    public List<Course> findAll() {
+        CourseDao mapper = MapperUtil.getMapper(CourseDao.class, true);
+        List<Course> courses = mapper.findAll();
+        MapperUtil.close();
+        return courses;
+    }
+
+    @Override
     public Course findById(String id) {
         CourseDao mapper = MapperUtil.getMapper(CourseDao.class, true);
         Course course = mapper.findById(id);
