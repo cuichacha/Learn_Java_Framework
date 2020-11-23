@@ -147,4 +147,25 @@ public class Question {
     public void setCatalog(Catalog catalog) {
         this.catalog = catalog;
     }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id='" + id + '\'' +
+                ", companyId='" + companyId + '\'' +
+                ", catalogId='" + catalogId + '\'' +
+                ", remark='" + remark + '\'' +
+                ", subject='" + subject + '\'' +
+                ", picture='" + picture + '\'' +
+                ", analysis='" + analysis + '\'' +
+                ", type='" + type + '\'' +
+                ", difficulty='" + difficulty + '\'' +
+                ", isClassic='" + isClassic + '\'' +
+                ", state='" + state + '\'' +
+                ", reviewStatus='" + reviewStatus + '\'' +
+                ", createTime=" + createTime +
+                ", company=" + company +
+                ", catalog=" + catalog +
+                '}';
+    }
 }

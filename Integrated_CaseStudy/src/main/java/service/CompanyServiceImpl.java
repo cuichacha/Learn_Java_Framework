@@ -22,6 +22,14 @@ public class CompanyServiceImpl implements CompanyService{
     }
 
     @Override
+    public List<Company> findAll() {
+        CompanyDao mapper = MapperUtil.getMapper(CompanyDao.class, true);
+        List<Company> companies = mapper.findAll();
+        MapperUtil.close();
+        return companies;
+    }
+
+    @Override
     public Company findById(String id) {
         CompanyDao mapper = MapperUtil.getMapper(CompanyDao.class, true);
         Company company = mapper.findById(id);

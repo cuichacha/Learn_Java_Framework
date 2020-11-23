@@ -7,8 +7,10 @@ service/CourseService.class
 dao/CompanyDao.class
 utils/MapperUtil.class
 service/UserServiceImpl.class
+service/QuestionServiceImpl.class
 dao/DeptDao.class
 web/controller/UserController.class
+service/QuestionService.class
 web/controller/DeptController.class
 dao/UserDao.class
 web/controller/CatalogController.class
@@ -20,11 +22,14 @@ utils/ParseUtil.class
 service/CatalogService.class
 domain/QuestionItem.class
 domain/Course.class
+utils/FileUtil.class
+web/controller/QuestionController.class
 utils/BeanUtil.class
 service/DeptService.class
 web/controller/CompanyController.class
 domain/Question.class
 service/UserService.class
+dao/QuestionDao.class
 service/CompanyServiceImpl.class
 web/controller/CourseController.class
 service/CompanyService.class

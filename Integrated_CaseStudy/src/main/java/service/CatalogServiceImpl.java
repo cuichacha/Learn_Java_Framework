@@ -21,6 +21,14 @@ public class CatalogServiceImpl implements CatalogService {
     }
 
     @Override
+    public List<Catalog> findAll() {
+        CatalogDao mapper = MapperUtil.getMapper(CatalogDao.class, true);
+        List<Catalog> catalogs = mapper.findAll();
+        MapperUtil.close();
+        return catalogs;
+    }
+
+    @Override
     public Catalog findById(String id) {
         CatalogDao mapper = MapperUtil.getMapper(CatalogDao.class, true);
         Catalog catalog = mapper.findById(id);

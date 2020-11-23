@@ -3,8 +3,12 @@ package service;
 import com.github.pagehelper.PageInfo;
 import domain.Catalog;
 
+import java.util.List;
+
 public interface CatalogService {
     public abstract PageInfo<Catalog> findByPage(Integer currentPage, Integer pageSize);
+
+    public abstract List<Catalog> findAll();
 
     public abstract Catalog findById(String id);
 
