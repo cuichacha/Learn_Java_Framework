@@ -4,9 +4,11 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import dao.UserDao;
 import domain.User;
+import utils.MD5Util;
 import utils.MapperUtil;
 
 import java.util.List;
+import java.util.UUID;
 
 public class UserServiceImpl implements UserService {
     @Override
@@ -29,6 +31,8 @@ public class UserServiceImpl implements UserService {
     @Override
     public Integer save(User user) {
         UserDao mapper = MapperUtil.getMapper(UserDao.class, true);
+        user.setId(UUID.randomUUID().toString());
+        user.setPassword(MD5Util.md5(user.getPassword()));
         Integer result = mapper.save(user);
         MapperUtil.close();
         return result;

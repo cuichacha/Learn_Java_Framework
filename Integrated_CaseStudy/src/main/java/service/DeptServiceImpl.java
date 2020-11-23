@@ -7,6 +7,7 @@ import domain.Dept;
 import utils.MapperUtil;
 
 import java.util.List;
+import java.util.UUID;
 
 public class DeptServiceImpl implements DeptService {
     @Override
@@ -38,6 +39,7 @@ public class DeptServiceImpl implements DeptService {
     @Override
     public Integer save(Dept dept) {
         DeptDao mapper = MapperUtil.getMapper(DeptDao.class, true);
+        dept.setId(UUID.randomUUID().toString());
         Integer result = mapper.save(dept);
         MapperUtil.close();
         return result;

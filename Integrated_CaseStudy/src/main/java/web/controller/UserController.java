@@ -17,7 +17,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.UUID;
 
@@ -77,19 +76,17 @@ public class UserController extends HttpServlet {
 
     private void save(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         User user = BeanUtil.fillBean(req, User.class, "yyyy-MM-dd");
-        user.setId(UUID.randomUUID().toString());
         userService.save(user);
         list(req, resp);
     }
 
     private void toEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String id = req.getParameter("id");
-        User user = userService.findById(id);
-        user.setPassword(MD5Util.md5(user.getPassword()));
-        req.setAttribute("user", user);
         DeptService deptService = new DeptServiceImpl();
         List<Dept> departments = deptService.findAll();
         req.setAttribute("deptList", departments);
+        String id = req.getParameter("id");
+        User user = userService.findById(id);
+        req.setAttribute("user", user);
         req.getRequestDispatcher("/WEB-INF/user/update.jsp").forward(req, resp);
     }
 

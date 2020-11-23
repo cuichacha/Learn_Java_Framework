@@ -72,7 +72,6 @@ public class CompanyController extends HttpServlet {
 
     private void save(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Company company = BeanUtil.fillBean(req, Company.class, "yyyy-MM-dd");
-        company.setId(UUID.randomUUID().toString());
         companyService.add(company);
         list(req, resp);
     }

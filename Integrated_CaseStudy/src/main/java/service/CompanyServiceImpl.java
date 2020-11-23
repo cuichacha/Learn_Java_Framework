@@ -7,6 +7,7 @@ import domain.Company;
 import utils.MapperUtil;
 
 import java.util.List;
+import java.util.UUID;
 
 public class CompanyServiceImpl implements CompanyService{
 
@@ -31,6 +32,7 @@ public class CompanyServiceImpl implements CompanyService{
     @Override
     public Integer add(Company company) {
         CompanyDao mapper = MapperUtil.getMapper(CompanyDao.class, true);
+        company.setId(UUID.randomUUID().toString());
         Integer result = mapper.save(company);
         MapperUtil.close();
         return result;

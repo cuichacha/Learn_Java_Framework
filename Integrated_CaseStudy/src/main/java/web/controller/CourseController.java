@@ -1,10 +1,9 @@
 package web.controller;
 
 import com.github.pagehelper.PageInfo;
-import domain.Company;
-import domain.Dept;
-import service.DeptService;
-import service.DeptServiceImpl;
+import domain.Course;
+import service.CourseServiceImpl;
+import service.CourseService;
 import utils.BeanUtil;
 import utils.ParseUtil;
 
@@ -14,17 +13,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.Method;
-import java.util.List;
-import java.util.UUID;
 
-@WebServlet("/system/dept")
-public class DeptController extends HttpServlet {
-    private DeptService deptService = new DeptServiceImpl();
+@WebServlet("/store/course")
+public class CourseController extends HttpServlet {
+    private CourseService courseService = new CourseServiceImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        ParseUtil.parse(req,resp,this);
+        ParseUtil.parse(req, resp, this);
     }
 
     @Override
@@ -34,48 +30,46 @@ public class DeptController extends HttpServlet {
 
     private void list(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Integer currentPage = 1;
-        String currentPageStr = req.getParameter("page");
-        if (currentPageStr != null) {
-            currentPage = Integer.parseInt(currentPageStr);
+        Integer pageSize = 5;
+
+        String page = req.getParameter("page");
+        if (page != null) {
+            currentPage = Integer.parseInt(page);
         }
 
-        Integer pageSize = 5;
-        PageInfo<Dept> pageInfo = deptService.findByPage(currentPage, pageSize);
+        PageInfo<Course> pageInfo = courseService.findByPage(currentPage, pageSize);
         req.setAttribute("page", pageInfo);
-        req.getRequestDispatcher("/WEB-INF/dept/list.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/course/list.jsp").forward(req, resp);
     }
 
-
     private void toAdd(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        List<Dept> deptList = deptService.findAll();
-        req.setAttribute("deptList", deptList);
-        req.getRequestDispatcher("/WEB-INF/dept/add.jsp").forward(req,resp);
+        req.getRequestDispatcher("/WEB-INF/course/add.jsp").forward(req, resp);
     }
 
     private void save(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Dept dept = BeanUtil.fillBean(req, Dept.class);
-        deptService.save(dept);
+        Course course = BeanUtil.fillBean(req, Course.class, "yyyy-MM-dd");
+        courseService.save(course);
         list(req, resp);
     }
 
     private void toEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
-        Dept dept = deptService.findById(id);
-        req.setAttribute("dept", dept);
-        List<Dept> deptList = deptService.findAll();
-        req.setAttribute("deptList", deptList);
-        req.getRequestDispatcher("/WEB-INF/dept/update.jsp").forward(req,resp);
+        Course course = courseService.findById(id);
+        System.out.println(course);
+        req.setAttribute("course", course);
+        req.getRequestDispatcher("/WEB-INF/course/update.jsp").forward(req, resp);
     }
 
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Dept dept = BeanUtil.fillBean(req, Dept.class);
-        deptService.update(dept);
+        Course course = BeanUtil.fillBean(req, Course.class, "yyyy-MM-dd");
+        System.out.println(course);
+        courseService.update(course);
         list(req, resp);
     }
 
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
-        deptService.delete(id);
+        courseService.delete(id);
         list(req, resp);
     }
 }
