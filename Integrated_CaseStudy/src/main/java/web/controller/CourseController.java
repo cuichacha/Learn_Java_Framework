@@ -55,14 +55,12 @@ public class CourseController extends HttpServlet {
     private void toEdit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
         Course course = courseService.findById(id);
-        System.out.println(course);
         req.setAttribute("course", course);
         req.getRequestDispatcher("/WEB-INF/course/update.jsp").forward(req, resp);
     }
 
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Course course = BeanUtil.fillBean(req, Course.class, "yyyy-MM-dd");
-        System.out.println(course);
         courseService.update(course);
         list(req, resp);
     }
