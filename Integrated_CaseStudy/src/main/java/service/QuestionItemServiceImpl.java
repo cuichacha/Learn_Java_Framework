@@ -7,6 +7,7 @@ import domain.QuestionItem;
 import utils.MapperUtil;
 
 import java.util.List;
+import java.util.UUID;
 
 public class QuestionItemServiceImpl implements QuestionItemService {
     @Override
@@ -17,6 +18,15 @@ public class QuestionItemServiceImpl implements QuestionItemService {
         PageInfo<QuestionItem> pageInfo = new PageInfo<>(questionItems);
         MapperUtil.close();
         return pageInfo;
+    }
+
+    @Override
+    public Integer save(QuestionItem questionItem) {
+        QuestionItemDao mapper = MapperUtil.getMapper(QuestionItemDao.class, true);
+        questionItem.setId(UUID.randomUUID().toString());
+        Integer result = mapper.save(questionItem);
+        MapperUtil.close();
+        return result;
     }
 
 

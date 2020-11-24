@@ -18,6 +18,7 @@ public class FileBeanUtil {
     public static <T> T fillBean(HttpServletRequest req, Class<T> tClass, String relativePath, String fileNameWithPath) throws Exception {
         T t = null;
         boolean multipartContent = ServletFileUpload.isMultipartContent(req);
+
         List<FileItem> fileItems = servletFileUpload.parseRequest(req);
         if (multipartContent) {
             t = BeanUtil.fillBean(fileItems, tClass);
