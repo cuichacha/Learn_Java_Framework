@@ -48,7 +48,7 @@
         <!--订单信息-->
         <div class="panel panel-default">
             <div class="panel-heading">新增选项</div>
-            <input type="text" value="${questionId}">
+<%--&lt;%&ndash;            <input type="text" value="${questionId}">&ndash;%&gt;  ID传递测试用--%>
             <form id="editForm" action="${ctx}/store/questionItem?operation=save" method="post" enctype="multipart/form-data">
                 <input type="hidden" name="questionId" value="${questionId}">
                 <input type="hidden" name="id" value="${questionItem.id}">
@@ -151,11 +151,11 @@
                 </div>
                 <!-- 数据表格 /-->
             </div>
-<%--            <div class="box-footer">--%>
-<%--                <jsp:include page="../common/page.jsp">--%>
-<%--                    <jsp:param value="${ctx}/store/questionItem?operation=list" name="pageUrl"/>--%>
-<%--                </jsp:include>--%>
-<%--            </div>--%>
+            <div class="box-footer">
+                <jsp:include page="../common/page.jsp">
+                    <jsp:param value="${ctx}/store/questionItem?operation=list&&questionId=${questionId}" name="pageUrl"/>
+                </jsp:include>
+            </div>
         </div>
 
     </section>
