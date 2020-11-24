@@ -47,7 +47,7 @@ public class CourseController extends HttpServlet {
     }
 
     private void save(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Course course = BeanUtil.fillBean(req, Course.class, "yyyy-MM-dd");
+        Course course = BeanUtil.fillBean(req, Course.class);
         courseService.save(course);
         list(req, resp);
     }
@@ -60,7 +60,7 @@ public class CourseController extends HttpServlet {
     }
 
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Course course = BeanUtil.fillBean(req, Course.class, "yyyy-MM-dd");
+        Course course = BeanUtil.fillBean(req, Course.class);
         courseService.update(course);
         list(req, resp);
     }

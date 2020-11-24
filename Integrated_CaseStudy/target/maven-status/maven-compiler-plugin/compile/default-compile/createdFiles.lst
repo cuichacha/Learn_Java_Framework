@@ -1,5 +1,6 @@
 domain/Company.class
 domain/Catalog.class
+utils/FileBeanUtil.class
 domain/Dept.class
 service/CourseServiceImpl.class
 dao/CatalogDao.class

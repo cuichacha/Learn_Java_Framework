@@ -6,6 +6,7 @@ import domain.Company;
 import domain.Question;
 import service.*;
 import utils.BeanUtil;
+import utils.FileBeanUtil;
 import utils.FileUtil;
 import utils.ParseUtil;
 
@@ -57,7 +58,7 @@ public class QuestionController extends HttpServlet {
 
     private void save(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String fileNameWithPath = FileUtil.getFileNameWithPath();
-        Question question = BeanUtil.fillBean(req, Question.class, "yyyy-MM-dd", "upload", fileNameWithPath);
+        Question question = FileBeanUtil.fillBean(req, Question.class,"upload", fileNameWithPath);
         question.setPicture(fileNameWithPath);
         questionService.save(question);
         list(req, resp);
@@ -76,7 +77,7 @@ public class QuestionController extends HttpServlet {
 
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws Exception {
         String fileNameWithPath = FileUtil.getFileNameWithPath();
-        Question question = BeanUtil.fillBean(req, Question.class, "yyyy-MM-dd", "upload", fileNameWithPath);
+        Question question = FileBeanUtil.fillBean(req, Question.class,"upload", fileNameWithPath);
         question.setPicture(fileNameWithPath);
         questionService.update(question);
         list(req, resp);

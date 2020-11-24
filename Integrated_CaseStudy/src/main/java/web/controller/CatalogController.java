@@ -54,7 +54,7 @@ public class CatalogController extends HttpServlet {
     }
 
     private void save(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Catalog catalog = BeanUtil.fillBean(req, Catalog.class, "yyyy-MM-dd");
+        Catalog catalog = BeanUtil.fillBean(req, Catalog.class);
         catalogService.save(catalog);
         list(req, resp);
     }
@@ -69,7 +69,7 @@ public class CatalogController extends HttpServlet {
     }
 
     private void edit(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Catalog catalog = BeanUtil.fillBean(req, Catalog.class, "yyyy-MM-dd");
+        Catalog catalog = BeanUtil.fillBean(req, Catalog.class);
         catalogService.update(catalog);
         list(req, resp);
     }

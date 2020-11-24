@@ -23,8 +23,6 @@ import java.util.List;
  * @author zhy
  */
 public class BeanUtil {
-    private static DiskFileItemFactory fileItemFactory = new DiskFileItemFactory();
-    private static ServletFileUpload servletFileUpload = new ServletFileUpload(fileItemFactory);
 
     private BeanUtil() {
     }
@@ -118,24 +116,5 @@ public class BeanUtil {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-    }
-
-    public static <T> T fillBean(HttpServletRequest req, Class<T> tClass, String datePattern, String relativePath, String fileNameWithPath) throws Exception {
-        T t = null;
-        boolean multipartContent = ServletFileUpload.isMultipartContent(req);
-        List<FileItem> fileItems = servletFileUpload.parseRequest(req);
-        if (multipartContent) {
-            t = fillBean(fileItems, tClass);
-            String realPath = req.getServletContext().getRealPath(relativePath);
-            FileUtil.makeDirs(fileNameWithPath, realPath);
-            for (FileItem fileItem : fileItems) {
-                if (!fileItem.isFormField()) {
-                    fileItem.write(new File(realPath, fileNameWithPath));
-                }
-            }
-        } else {
-            t = fillBean(req, tClass, datePattern);
-        }
-        return t;
     }
 }
