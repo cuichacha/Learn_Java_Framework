@@ -40,13 +40,10 @@
         </environment>
     </environments>
 
-
-
     <!--配置映射配置文件的位置-->
     <mappers>
         <!--指定实体映射配置文件所在的包，指定的是dao接口所在的包-->
         <package name="dao"></package>
     </mappers>
-
 
 </configuration>
