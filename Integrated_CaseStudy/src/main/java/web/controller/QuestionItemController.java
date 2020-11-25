@@ -19,10 +19,7 @@ import utils.ParseUtil;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
+import javax.servlet.http.*;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
@@ -104,9 +101,24 @@ public class QuestionItemController extends HttpServlet {
         Object isUpdate = req.getAttribute("id");
         // 如果域对象中有id的值，那么这次请求就是一次修改请求，因为toEdit方法中，对request对象写入了id值
         if (isUpdate != null) {
-            String id = isUpdate.toString();
-            // 把对应id的questionItem删除，页面中也会删除，显示效果就是下方表格的数据，去到了上方保存的输入框中
-            questionItemService.delete(id);
+
+            /*
+                // 把对应id的questionItem删除，页面中也会删除，显示效果就是下方表格的数据，去到了上方保存的输入框中
+                    questionItemService.delete(id);
+                // 后续补充：这样的话，如果用户修改选项之后，没点保存，直接关页面，那么旧的选项就丢了
+             */
+
+            // 储存旧的questionItem的id值，写入域对象中
+
+            /*
+                这里用session的原因是，请求有两次，这一次是把所编辑的选项的内容显示到页面上方的输入框中，
+                然后第二次请求才是走下面的else，对输入框里编辑的内容进行保存，那么如果用request对象，
+                前台并没有，对request对象里的值进行传递，因此旧的questionItem的id值会丢失，
+                所以需要用session对象进行储存
+             */
+            HttpSession session = req.getSession();
+            session.setAttribute("oldId", isUpdate);
+
             Object questionIdObj = req.getAttribute("questionId");
             // 把toEdit方法中写入的值，赋值给questionId，用于后续list方法页面的显示操作
             questionId = questionIdObj.toString();
@@ -124,6 +136,14 @@ public class QuestionItemController extends HttpServlet {
                 }
             }
             // 拿到questionId的值，作为外键，对questionItem对象进行保存入表的操作
+
+            // 看域对象里，有没有oldId的值，有的话，就表示这是一次修改，那么要在保存之前删除旧的选项
+            HttpSession session = req.getSession();
+            Object oldIdObj = session.getAttribute("oldId");
+            if (oldIdObj != null) {
+                String oldId = oldIdObj.toString();
+                questionItemService.delete(oldId);
+            }
             questionItemService.save(questionItem);
         }
         // 把questionId的值回写到域对象，用于list方法对于页面的显示操作
