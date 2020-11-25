@@ -4,12 +4,12 @@ import com.alibaba.excel.annotation.ExcelProperty;
 
 import java.util.Date;
 
-public class Question {
-
+public class Question_ExcelOperation {
+    @ExcelProperty(index = 1)
     private String id;            //题目ID
-
+    @ExcelProperty(index = 2)
     private String companyId;	//所属企业
-
+    @ExcelProperty(index = 3)
     private String catalogId;	//题目所属目录ID
 
     private String remark;		//题目简介
@@ -152,9 +152,15 @@ public class Question {
         this.catalog = catalog;
     }
 
+    public Question_ExcelOperation(String id, String companyId, String catalogId) {
+        this.id = id;
+        this.companyId = companyId;
+        this.catalogId = catalogId;
+    }
+
     @Override
     public String toString() {
-        return "Question{" +
+        return "Question_ExcelOperation{" +
                 "id='" + id + '\'' +
                 ", companyId='" + companyId + '\'' +
                 ", catalogId='" + catalogId + '\'' +
