@@ -19,7 +19,10 @@ import java.util.Map;
 public class ExcelOperation {
     @Test
     public void read() {
-        EasyExcel.read("/Users/willdufresne/Documents/Programming/Source_Codes/Java_Learning_In_Heima/Learn_Java_Framework/Integrated_CaseStudy/test1.xlsx", Question.class, new SyncReadListener(){
+        EasyExcel.read("/Users/willdufresne/Documents/Programming/Source_Codes" +
+                "/Java_Learning_In_Heima/Learn_Java_Framework" +
+                "/Integrated_CaseStudy/test1.xlsx"
+                , Question.class, new SyncReadListener(){
             @Override
             public void invoke(Object object, AnalysisContext context) {
                 System.out.println(object);

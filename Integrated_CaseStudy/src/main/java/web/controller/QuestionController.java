@@ -10,6 +10,7 @@ import utils.FileBeanUtil;
 import utils.FileUtil;
 import utils.ParseUtil;
 
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -17,6 +18,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
+import java.util.UUID;
 
 @WebServlet("/store/question")
 public class QuestionController extends HttpServlet {
@@ -87,5 +89,19 @@ public class QuestionController extends HttpServlet {
         String id = req.getParameter("id");
         questionService.delete(id);
         list(req, resp);
+    }
+
+    private void toExport(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String fileName = UUID.randomUUID().toString().replaceAll("-", "") + ".xlsx";
+
+        ServletContext servletContext = req.getServletContext();
+        String mimeType = servletContext.getMimeType(fileName);
+        resp.setHeader("content-type", mimeType);
+        resp.setHeader("content-disposition", "attachment;filename=" + fileName);
+
+        String realPath = servletContext.getRealPath("/template/question_template.xlsx");
+
+        questionService.downloadReport(resp.getOutputStream(), realPath);
+
     }
 }

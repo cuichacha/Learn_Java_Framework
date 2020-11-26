@@ -1,11 +1,13 @@
 package service;
 
+import com.alibaba.excel.EasyExcel;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import dao.QuestionDao;
 import domain.Question;
 import utils.MapperUtil;
 
+import javax.servlet.ServletOutputStream;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
@@ -60,5 +62,15 @@ public class QuestionServiceImpl implements QuestionService {
         Integer result = mapper.delete(id);
         MapperUtil.close();
         return result;
+    }
+
+    @Override
+    public void downloadReport(ServletOutputStream servletOutputStream, String templatePath) {
+        QuestionDao mapper = MapperUtil.getMapper(QuestionDao.class, true);
+        List<Question> questions = mapper.findAll();
+        MapperUtil.close();
+
+        EasyExcel.write(servletOutputStream, Question.class)
+                .withTemplate(templatePath).sheet().doFill(questions);
     }
 }
