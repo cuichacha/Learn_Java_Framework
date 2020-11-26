@@ -97,6 +97,7 @@ public class QuestionController extends HttpServlet {
         ServletContext servletContext = req.getServletContext();
         String mimeType = servletContext.getMimeType(fileName);
         resp.setHeader("content-type", mimeType);
+        // 如果需要解决文件中文名乱码问题，需要使用encoding编码解决
         resp.setHeader("content-disposition", "attachment;filename=" + fileName);
 
         String realPath = servletContext.getRealPath("/template/question_template.xlsx");
