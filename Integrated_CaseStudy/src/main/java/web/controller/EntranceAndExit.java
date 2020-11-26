@@ -41,12 +41,11 @@ public class EntranceAndExit extends HttpServlet {
 //            resp.sendRedirect("/CaseStudy/login.jsp");
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
         } else {
+            String id = user.getId();
+            req.getSession().setAttribute("UserId", id);
             req.getSession().setAttribute("logInUser", user);
             req.getRequestDispatcher("/WEB-INF/pages/home/main.jsp").forward(req, resp);
         }
-        String id = user.getId();
-        req.setAttribute("id", id);
-
     }
 
     private void goHome(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

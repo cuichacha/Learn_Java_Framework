@@ -25,13 +25,15 @@ public class AuthorizationFilter implements Filter {
     public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) servletRequest;
         HttpServletResponse resp = (HttpServletResponse) servletResponse;
+        String queryString = req.getQueryString();
         String originalRequestURI = req.getRequestURI();
-        String requestURI = originalRequestURI.substring(originalRequestURI.lastIndexOf("/"));
-        String id = req.getParameter("id");
+        String modifiedRequestURI = originalRequestURI.substring(11);
+        String requestURI = modifiedRequestURI + "?" +queryString;
+        String id = (String) req.getSession().getAttribute("UserId");
         List<String> urls = userService.findModuleUrlsByUserId(id);
         boolean isContained = urls.contains(requestURI);
         if (isContained) {
-            doFilter(servletRequest, servletResponse, filterChain);
+            filterChain.doFilter(servletRequest, servletResponse);
         } else {
             req.getRequestDispatcher("/unauthorized.jsp").forward(req, resp);
         }

@@ -16,7 +16,7 @@ public class UserTest {
 //        PageInfo<User> pageInfo = userService.findByPage(1, 5);
 //        System.out.println(pageInfo);
 
-        List<String> urls = userService.findModuleUrlsByUserId("002108e2-9a10-4510-9683-8d8fd1d374ef");
+        List<String> urls = userService.findModuleUrlsByUserId("1");
         System.out.println(urls);
     }
 }
