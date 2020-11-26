@@ -1,4 +1,5 @@
 <%@ page contentType="text/html; charset=utf-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <meta charset="utf-8">
@@ -28,8 +29,8 @@
     <!-- /.login-logo -->
     <div class="login-box-body">
         <p class="login-box-msg">登录系统</p>
-        <%--<form action="${pageContext.request.contextPath}/login?operation=login" method="post">--%>
-        <form action="${pageContext.request.contextPath}/pages/home/main.jsp" method="post">
+        <form action="${pageContext.request.contextPath}/EntranceAndExit?operation=login" method="post">
+<%--        <form action="${pageContext.request.contextPath}/pages/home/main.jsp" method="post">--%>
             <div class="form-group has-feedback">
                 <input type="email" name="email" class="form-control" placeholder="Email" value="test@itcast.cn">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
@@ -56,6 +57,7 @@
         </div>
     </div>
 </div>
+
 <script src="${pageContext.request.contextPath}/plugins/jQuery/jquery-2.2.3.min.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/bootstrap/js/bootstrap.min.js"></script>
 <script src="${pageContext.request.contextPath}/plugins/iCheck/icheck.min.js"></script>
@@ -67,6 +69,14 @@
             increaseArea: '20%' // optional
         });
     });
+</script>
+<script>
+    <c:if test="${wrongEmail == true}">
+        alert("邮箱错误！！");
+    </c:if>
+    <c:if test="${wrongPwd == true}">
+        alert("密码错误！！");
+    </c:if>
 </script>
 </body>
 </html>

@@ -2,6 +2,7 @@ package service;
 
 import com.github.pagehelper.PageInfo;
 import domain.User;
+import domain.UserRole;
 
 import java.util.List;
 
@@ -15,4 +16,12 @@ public interface UserService {
     public abstract Integer update(User user);
 
     public abstract Integer delete(String id);
+
+    public abstract List<UserRole> findRolesByUserId(String userId);
+
+    public abstract void updateUserRole(String userId, String[] roleIds);
+
+    public abstract User findByEmail(String email);
+
+    public abstract List<String> findModuleUrlsByUserId(String id);
 }

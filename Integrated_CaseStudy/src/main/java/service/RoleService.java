@@ -2,6 +2,7 @@ package service;
 
 import com.github.pagehelper.PageInfo;
 import domain.Role;
+import domain.UserRole;
 
 import java.util.List;
 
@@ -18,5 +19,6 @@ public interface RoleService {
 
     public abstract Integer delete(String id);
 
-    public abstract void updateRoleModules(String roleId, String[] moduleIds);
+    public abstract void updateRoleModule(String roleId, String[] moduleIds);
+
 }

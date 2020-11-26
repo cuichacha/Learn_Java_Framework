@@ -91,7 +91,7 @@ public class RoleController extends HttpServlet {
     private void updateRoleModules(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String roleId = req.getParameter("roleId");
         String[] moduleIds = req.getParameterValues("moduleIds");
-        roleService.updateRoleModules(roleId, moduleIds);
+        roleService.updateRoleModule(roleId, moduleIds);
         list(req, resp);
     }
 }

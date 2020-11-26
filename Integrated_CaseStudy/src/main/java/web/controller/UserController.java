@@ -2,11 +2,10 @@ package web.controller;
 
 import com.github.pagehelper.PageInfo;
 import domain.Dept;
+import domain.Role;
 import domain.User;
-import service.DeptService;
-import service.DeptServiceImpl;
-import service.UserService;
-import service.UserServiceImpl;
+import domain.UserRole;
+import service.*;
 import utils.BeanUtil;
 import utils.MD5Util;
 import utils.ParseUtil;
@@ -99,6 +98,23 @@ public class UserController extends HttpServlet {
     private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String id = req.getParameter("id");
         userService.delete(id);
+        list(req, resp);
+    }
+
+    private void userRoleList(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userId = req.getParameter("id");
+        User user = userService.findById(userId);
+        req.setAttribute("user", user);
+        List<UserRole> roleList = userService.findRolesByUserId(userId);
+        req.setAttribute("roleList", roleList);
+        req.setAttribute("userId", userId);
+        req.getRequestDispatcher("/WEB-INF/user/role.jsp").forward(req, resp);
+    }
+
+    private void updateRole(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String userId = req.getParameter("userId");
+        String[] roleIds = req.getParameterValues("roleIds");
+        userService.updateUserRole(userId, roleIds);
         list(req, resp);
     }
 }

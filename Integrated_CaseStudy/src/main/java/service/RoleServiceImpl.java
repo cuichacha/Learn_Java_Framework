@@ -4,6 +4,7 @@ import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
 import dao.RoleDao;
 import domain.Role;
+import domain.UserRole;
 import utils.MapperUtil;
 
 import java.util.List;
@@ -62,13 +63,13 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public void updateRoleModules(String roleId, String[] moduleIds) {
+    public void updateRoleModule(String roleId, String[] moduleIds) {
         RoleDao mapper = MapperUtil.getMapper(RoleDao.class, false);
         try {
-            mapper.deleteRoleModules(roleId);
+            mapper.deleteRoleModule(roleId);
             if (moduleIds != null) {
                 for (String moduleId : moduleIds) {
-                    Integer integer = mapper.saveRoleModules(roleId, moduleId);
+                    Integer integer = mapper.saveRoleModule(roleId, moduleId);
                     System.out.println(integer);
                 }
             }

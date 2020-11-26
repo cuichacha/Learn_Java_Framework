@@ -5,6 +5,7 @@ utils/FileBeanUtil.class
 web/controller/ModuleController.class
 service/CourseServiceImpl.class
 dao/RoleDao.class
+domain/UserRole.class
 dao/CompanyDao.class
 service/QuestionItemService.class
 dao/QuestionItemDao.class
@@ -48,5 +49,6 @@ utils/BeanUtil.class
 web/controller/CompanyController.class
 domain/Question.class
 service/UserService.class
+web/controller/EntranceAndExit.class
 web/controller/CourseController.class
 service/CatalogServiceImpl.class

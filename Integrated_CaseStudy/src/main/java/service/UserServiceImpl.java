@@ -2,8 +2,10 @@ package service;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import dao.RoleDao;
 import dao.UserDao;
 import domain.User;
+import domain.UserRole;
 import utils.MD5Util;
 import utils.MapperUtil;
 
@@ -52,5 +54,48 @@ public class UserServiceImpl implements UserService {
         Integer result = mapper.delete(id);
         MapperUtil.close();
         return result;
+    }
+
+    @Override
+    public List<UserRole> findRolesByUserId(String userId) {
+        UserDao mapper = MapperUtil.getMapper(UserDao.class, true);
+        List<UserRole> roles = mapper.findRolesByUserId(userId);
+        MapperUtil.close();
+        return roles;
+    }
+
+    @Override
+    public void updateUserRole(String userId, String[] roleIds) {
+        UserDao mapper = MapperUtil.getMapper(UserDao.class, false);
+        try {
+            mapper.deleteUserRole(userId);
+            for (String roleId : roleIds) {
+                if (roleId != null) {
+                    mapper.saveUserRole(userId, roleId);
+                }
+            }
+            MapperUtil.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            MapperUtil.rollback();
+        } finally {
+            MapperUtil.close();
+        }
+    }
+
+    @Override
+    public User findByEmail(String email) {
+        UserDao mapper = MapperUtil.getMapper(UserDao.class, true);
+        User user = mapper.findByEmail(email);
+        MapperUtil.commit();
+        return user;
+    }
+
+    @Override
+    public List<String> findModuleUrlsByUserId(String id) {
+        UserDao mapper = MapperUtil.getMapper(UserDao.class, true);
+        List<String> urls = mapper.findModulesUrlsByUserId(id);
+        MapperUtil.commit();
+        return urls;
     }
 }

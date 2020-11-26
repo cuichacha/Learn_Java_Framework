@@ -2,6 +2,7 @@ package dao;
 
 import domain.Role;
 import domain.Module;
+import domain.UserRole;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -17,7 +18,8 @@ public interface RoleDao {
 
     public abstract Integer delete(String id);
 
-    public abstract Integer deleteRoleModules(String id);
+    public abstract Integer deleteRoleModule(String id);
 
-    public abstract Integer saveRoleModules(@Param("roleId") String roleId, @Param("moduleId") String moduleId);
+    public abstract Integer saveRoleModule(@Param("roleId") String roleId, @Param("moduleId") String moduleId);
+
 }

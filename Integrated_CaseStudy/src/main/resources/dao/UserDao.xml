@@ -14,11 +14,16 @@
         <result column="join_date" jdbcType="VARCHAR" property="joinDate"/>
         <result column="dept_id" jdbcType="VARCHAR" property="deptId"/>
         <association
-            property="dept"
-            column="dept_id"
-            javaType="domain.Dept"
-            select="dao.DeptDao.findById"
-            />
+                property="dept"
+                column="dept_id"
+                javaType="domain.Dept"
+                select="dao.DeptDao.findById"/>
+    </resultMap>
+
+    <resultMap id="UserRoleResultMap" type="domain.UserRole">
+        <id column="role_id" jdbcType="VARCHAR" property="id"/>
+        <result column="name" jdbcType="VARCHAR" property="name"/>
+        <result column="is_checked" jdbcType="VARCHAR" property="isChecked"/>
     </resultMap>
 
     <!--配置查询的列名公共SQL语句-->
@@ -73,5 +78,51 @@
         dept_id = #{deptId,jdbcType=VARCHAR}
         where user_id = #{id,jdbcType=VARCHAR}
     </update>
+
+    <!--配置根据ID查询-->
+    <select id="findRolesByUserId" parameterType="java.lang.String" resultMap="UserRoleResultMap">
+        SELECT
+            role_id,
+            NAME,
+            CASE
+                WHEN role_id IN (SELECT role_id FROM ss_role_user WHERE user_id = #{'userId'})
+                THEN 'checked'
+                ELSE ''
+            END
+            AS is_checked
+        FROM
+            ss_role
+    </select>
+
+    <!--配置根据roleId删除关系表数据-->
+    <delete id="deleteUserRole" parameterType="java.lang.String">
+        delete from ss_role_user
+        where user_id = #{userId,jdbcType=VARCHAR}
+    </delete>
+
+    <!--配置全字段插入，当某个字段没有值时，插入null-->
+    <insert id="saveUserRole" parameterType="map">
+        insert into ss_role_user (user_id, role_id)
+        values (#{userId,jdbcType=VARCHAR}, #{roleId,jdbcType=VARCHAR})
+    </insert>
+
+    <!--配置根据Email查询-->
+    <select id="findByEmail" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from ss_user
+        where email = #{email,jdbcType=VARCHAR}
+    </select>
+
+    <!--配置根据ID查询-->
+    <select id="findModulesUrlsByUserId" parameterType="java.lang.String" resultType="java.lang.String">
+        select sm.curl
+            from ss_role_user as sru,
+                ss_role_module as srm,
+                ss_module as sm
+            where sru.user_id = #{userId,jdbcType=VARCHAR}
+                and sru.role_id = srm.role_id
+                and srm.module_id = sm.module_id;
+    </select>
 
 </mapper>
