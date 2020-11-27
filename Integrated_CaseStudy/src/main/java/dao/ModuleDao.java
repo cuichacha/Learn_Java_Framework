@@ -17,4 +17,6 @@ public interface ModuleDao {
     public abstract Integer delete(String id);
 
     public abstract List<RoleModule> findAuthorizationDataByRoleId(String roleId);
+
+    public abstract List<Module> findModuleByUserId(String id);
 }

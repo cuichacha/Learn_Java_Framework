@@ -20,4 +20,6 @@ public interface ModuleService {
     public abstract Integer delete(String id);
 
     public abstract List<RoleModule> findModuleByRoleId(String roleId);
+
+    public abstract List<Module> findModuleByUserId(String id);
 }

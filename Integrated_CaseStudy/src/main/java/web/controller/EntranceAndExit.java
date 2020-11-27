@@ -1,6 +1,9 @@
 package web.controller;
 
+import domain.Module;
 import domain.User;
+import service.ModuleService;
+import service.ModuleServiceImpl;
 import service.UserService;
 import service.UserServiceImpl;
 import utils.MD5Util;
@@ -12,10 +15,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 @WebServlet("/EntranceAndExit")
 public class EntranceAndExit extends HttpServlet {
     private UserService userService = new UserServiceImpl();
+    private ModuleService moduleService = new ModuleServiceImpl();
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -32,6 +37,9 @@ public class EntranceAndExit extends HttpServlet {
         String password = req.getParameter("password");
         String pwd = MD5Util.md5(password);
         User user = userService.findByEmail(email);
+        String id = user.getId();
+        List<Module> modules = moduleService.findModuleByUserId(id);
+
         if (user == null) {
             req.setAttribute("wrongEmail", true);
 //            resp.sendRedirect("/CaseStudy/login.jsp");
@@ -41,7 +49,7 @@ public class EntranceAndExit extends HttpServlet {
 //            resp.sendRedirect("/CaseStudy/login.jsp");
             req.getRequestDispatcher("/login.jsp").forward(req, resp);
         } else {
-            String id = user.getId();
+            req.setAttribute("modules", modules);
             req.getSession().setAttribute("UserId", id);
             req.getSession().setAttribute("logInUser", user);
             req.getRequestDispatcher("/WEB-INF/pages/home/main.jsp").forward(req, resp);

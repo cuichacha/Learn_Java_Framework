@@ -69,4 +69,12 @@ public class ModuleServiceImpl implements ModuleService {
         MapperUtil.close();
         return roleModules;
     }
+
+    @Override
+    public List<Module> findModuleByUserId(String id) {
+        ModuleDao mapper = MapperUtil.getMapper(ModuleDao.class, true);
+        List<Module> modules = mapper.findModuleByUserId(id);
+        MapperUtil.close();
+        return modules;
+    }
 }
