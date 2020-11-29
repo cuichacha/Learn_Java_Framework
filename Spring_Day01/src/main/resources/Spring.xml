@@ -1,7 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xmlns:context="http://www.springframework.org/schema/context"
 
-    <bean id="userService" class="service.impl.UserServiceImpl" />
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+
+<!--    <bean id="userService1" class="service.impl.UserServiceImpl" />-->
+<!--    <bean id="userService2" class="service.impl.UserServiceImpl" scope="singleton"/>-->
+<!--    <bean id="userService3" class="service.impl.UserServiceImpl" scope="prototype"/>-->
+
+    <bean id="userDao" class="dao.impl.UserDaoImpl"/>
+
+<!--    <bean id="userService1" class="service.impl.UserServiceImpl">-->
+<!--        <property name="userDao" ref="userDao"/>-->
+<!--        <property name="num" value="0"/>-->
+<!--        <property name="str" value="嘟嘟嘟"/>-->
+<!--    </bean>-->
+
+<!--    <bean id="userService" class="service.impl.UserServiceImpl">-->
+<!--        <constructor-arg name="userDao" ref="userDao"/>-->
+<!--        <constructor-arg name="num" value="5"/>-->
+<!--        <constructor-arg name="str" value="滴滴滴"/>-->
+<!--    </bean>-->
+
+    <bean id="collectionTest" class="CollectionTrial.CollectionTrial">
+        <property name="intArr" >
+            <array>
+                <value>0</value>
+                <value>1</value>
+                <value>2</value>
+            </array>
+        </property>
+
+        <property name="arrayList">
+            <util:list>
+                <value>啦啦啦</value>
+            </util:list>
+        </property>
+
+        <property name="hashSet">
+            <util:set>
+                <value>5</value>
+                <value>5</value>
+                <value>6</value>
+            </util:set>
+        </property>
+
+        <property name="hashMap">
+            <util:map>
+                <entry key="1" value="1"/>
+                <entry key="2" value="2"/>
+                <entry key="3" value="3"/>
+            </util:map>
+        </property>
+
+        <property name="properties">
+            <util:properties>
+                <prop key="1">1</prop>
+                <prop key="2">2</prop>
+                <prop key="3">3</prop>
+            </util:properties>
+        </property>
+    </bean>
+
+    <context:property-placeholder location="classpath:jdbc.properties"/>
+
+    <bean id="jdbcProp" class="service.impl.UserServiceImpl">
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <import resource="classpath:import/Import.xml"/>
+
 </beans>
