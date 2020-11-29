@@ -80,7 +80,7 @@
             ss_module
     </select>
 
-    <select id="findModuleByUserId" parameterType="string" resultType="java.util.Map">
+    <select id="findModuleByUserId" parameterType="string" resultMap="BaseResultMap">
         select distinct
             sm.module_id, sm.parent_id, sm.parent_name, sm.name, sm.ctype, sm.state, sm.curl, sm.remark
             from ss_role_user as sru,
