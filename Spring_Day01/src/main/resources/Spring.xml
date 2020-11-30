@@ -23,7 +23,7 @@
 <!--        <constructor-arg name="str" value="滴滴滴"/>-->
 <!--    </bean>-->
 
-    <bean id="collectionTest" class="CollectionTrial.CollectionTrial">
+    <bean id="collectionTest" class="collectiontrial.CollectionTrial">
         <property name="intArr" >
             <array>
                 <value>0</value>
@@ -71,5 +71,7 @@
     </bean>
 
     <import resource="classpath:import/Import.xml"/>
+
+
 
 </beans>

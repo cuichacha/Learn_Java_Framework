@@ -16,4 +16,10 @@ public class SpringTest {
     public void test1() {
         userService.findAll();
     }
+
+    @Test
+    public void test2() {
+        String s = userService.findById("2");
+
+    }
 }

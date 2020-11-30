@@ -10,7 +10,9 @@
     <aop:config>
         <aop:aspect ref="advice">
             <aop:pointcut id="pt" expression="execution(* *..*.*(..))"/>
-            <aop:before method="method" pointcut-ref="pt"/>
+            <aop:before method="method1" pointcut-ref="pt"/>
+            <aop:after method="method2" pointcut-ref="pt"/>
+            <aop:after-returning method="method3" pointcut-ref="pt" returning="obj"/>
         </aop:aspect>
     </aop:config>
 

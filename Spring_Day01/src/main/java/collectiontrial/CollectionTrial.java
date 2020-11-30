@@ -1,4 +1,4 @@
-package CollectionTrial;
+package collectiontrial;
 
 import java.util.*;
 

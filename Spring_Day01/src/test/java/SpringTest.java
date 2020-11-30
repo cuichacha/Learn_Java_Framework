@@ -1,11 +1,8 @@
-import CollectionTrial.CollectionTrial;
+import collectiontrial.CollectionTrial;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import service.UserService;
-
-import java.security.PublicKey;
 
 public class SpringTest {
 
