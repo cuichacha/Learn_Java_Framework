@@ -11,7 +11,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	<link rel="stylesheet" href="sample.css">
 	<script>
 		// Remove advanced tabs for all editors.
-		CKEDITOR.config.removeDialogTabs = 'image:advanced;link:advanced;flash:advanced;creatediv:advanced;editdiv:advanced';
+		CKEDITOR.code1.config.removeDialogTabs = 'image:advanced;link:advanced;flash:advanced;creatediv:advanced;editdiv:advanced';
 	</script>
 </head>
 <body>
@@ -56,9 +56,9 @@ editor.setData( '&lt;p&gt;Hello world!&lt;/p&gt;' );
 		<p>
 			Advanced Content Filter is enabled by default, working in "automatic mode", yet
 			it provides a set of easy rules that allow adjusting filtering rules
-			and disabling the entire feature when necessary. The config property
+			and disabling the entire feature when necessary. The code1.config property
 			responsible for this feature is <code><a class="samples"
-			href="http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-allowedContent">config.allowedContent</a></code>.
+			href="http://docs.ckeditor.com/#!/api/CKEDITOR.code1.config-cfg-allowedContent">code1.config.allowedContent</a></code>.
 		</p>
 		<p>
 			By "automatic mode" is meant that loaded plugins decide which kind
@@ -67,8 +67,8 @@ editor.setData( '&lt;p&gt;Hello world!&lt;/p&gt;' );
 			automatically allowed. Each plugin is given a set
 			of predefined <abbr title="Advanced Content Filter">ACF</abbr> rules
 			that control the editor until <code><a class="samples"
-			href="http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-allowedContent">
-			config.allowedContent</a></code>
+			href="http://docs.ckeditor.com/#!/api/CKEDITOR.code1.config-cfg-allowedContent">
+            code1.config.allowedContent</a></code>
 			is defined manually.
 		</p>
 		<p>
@@ -76,8 +76,8 @@ editor.setData( '&lt;p&gt;Hello world!&lt;/p&gt;' );
 			only: no attributes, no styles, no other tags</strong>.
 			With <abbr title="Advanced Content Filter">ACF</abbr>
 			this is very simple. Basically set <code><a class="samples"
-			href="http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-allowedContent">
-			config.allowedContent</a></code> to <code>'p'</code>:
+			href="http://docs.ckeditor.com/#!/api/CKEDITOR.code1.config-cfg-allowedContent">
+            code1.config.allowedContent</a></code> to <code>'p'</code>:
 		</p>
 <pre class="samples">
 var editor = CKEDITOR.replace( <em>textarea_id</em>, {
@@ -96,7 +96,7 @@ alert( editor.getData() );
 "&lt;p&gt;Hello world!&lt;/p&gt;"
 </pre>
 		<p>
-			What happened? Since <code>config.allowedContent: 'p'</code> is set the editor assumes
+			What happened? Since <code>code1.config.allowedContent: 'p'</code> is set the editor assumes
 			that only plain <code>&lt;p&gt;</code> are accepted. Nothing more. This is why
 			<code>style</code> attribute and <code>&lt;em&gt;</code> tag are gone. The same
 			filtering would happen if we pasted disallowed HTML into this editor.
@@ -110,8 +110,8 @@ alert( editor.getData() );
 			You may, of course, want CKEditor to avoid filtering of any kind.
 			To get rid of <abbr title="Advanced Content Filter">ACF</abbr>,
 			basically set <code><a class="samples"
-			href="http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-allowedContent">
-			config.allowedContent</a></code> to <code>true</code> like this:
+			href="http://docs.ckeditor.com/#!/api/CKEDITOR.code1.config-cfg-allowedContent">
+            code1.config.allowedContent</a></code> to <code>true</code> like this:
 		</p>
 <pre class="samples">
 CKEDITOR.replace( <em>textarea_id</em>, {
@@ -135,7 +135,7 @@ CKEDITOR.replace( <em>textarea_id</em>, {
 			CKEditor can be far more specific. If <code>&lt;a&gt;</code> tag is
 			<strong>allowed</strong> by filtering rules to be used but it is restricted
 			to have only one attribute (<code>href</code>)
-			<code>config.allowedContent = 'a[!href]'</code>, then
+			<code>code1.config.allowedContent = 'a[!href]'</code>, then
 			"Target" tab of the link dialog is automatically disabled as <code>target</code>
 			attribute isn't included in <abbr title="Advanced Content Filter">ACF</abbr> rules
 			for <code>&lt;a&gt;</code>. This behaviour applies to dialog fields, context
@@ -159,8 +159,8 @@ CKEDITOR.replace( <em>textarea_id</em>, {
 			<p>
 				This editor is using default configuration ("automatic mode"). It means that
 				<code><a class="samples"
-				href="http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-allowedContent">
-				config.allowedContent</a></code> is defined by loaded plugins.
+				href="http://docs.ckeditor.com/#!/api/CKEDITOR.code1.config-cfg-allowedContent">
+                    code1.config.allowedContent</a></code> is defined by loaded plugins.
 				Each plugin extends filtering rules to make it's own associated content
 				available for the user.
 			</p>
@@ -244,8 +244,8 @@ CKEDITOR.replace( 'editor2', {
 				The same thing happened to subscript/superscript, strike, underline
 				(<code>&lt;u&gt;</code>, <code>&lt;sub&gt;</code>, <code>&lt;sup&gt;</code>
 				are disallowed by <code><a class="samples"
-				href="http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-allowedContent">
-				config.allowedContent</a></code>) and many other buttons.
+				href="http://docs.ckeditor.com/#!/api/CKEDITOR.code1.config-cfg-allowedContent">
+                code1.config.allowedContent</a></code>) and many other buttons.
 			</p>
 		</div>
 		<textarea cols="80" id="editor2" name="editor2" rows="10">

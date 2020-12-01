@@ -1,8 +1,8 @@
 import com.github.pagehelper.PageInfo;
-import domain.Company;
+import code1.domain.Company;
 import org.junit.Test;
-import service.CompanyService;
-import service.CompanyServiceImpl;
+import code1.service.CompanyService;
+import code1.service.CompanyServiceImpl;
 
 public class CompanyTest {
 

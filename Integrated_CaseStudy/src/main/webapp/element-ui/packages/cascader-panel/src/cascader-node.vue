@@ -21,8 +21,8 @@
     },
 
     computed: {
-      config() {
-        return this.panel.config;
+      code1.config() {
+        return this.panel.code1.config;
       },
       isLeaf() {
         return this.node.isLeaf;
@@ -40,7 +40,7 @@
         return this.isInPath(this.panel.activePath);
       },
       inCheckedPath() {
-        if (!this.config.checkStrictly) return false;
+        if (!this.code1.config.checkStrictly) return false;
 
         return this.panel.checkedNodePaths
           .some(checkedPath => this.isInPath(checkedPath));
@@ -52,12 +52,12 @@
 
     methods: {
       handleExpand() {
-        const { panel, node, isDisabled, config } = this;
-        const { multiple, checkStrictly } = config;
+        const { panel, node, isDisabled, code1.config } = this;
+        const { multiple, checkStrictly } = code1.config;
 
         if (!checkStrictly && isDisabled || node.loading) return;
 
-        if (config.lazy && !node.loaded) {
+        if (code1.config.lazy && !node.loaded) {
           panel.lazyLoad(node, () => {
             // do not use cached leaf value here, invoke this.isLeaf to get new value.
             const { isLeaf } = this;
@@ -92,8 +92,8 @@
       },
 
       renderPrefix(h) {
-        const { isLeaf, isChecked, config } = this;
-        const { checkStrictly, multiple } = config;
+        const { isLeaf, isChecked, code1.config } = this;
+        const { checkStrictly, multiple } = code1.config;
 
         if (multiple) {
           return this.renderCheckbox(h);
@@ -119,13 +119,13 @@
       },
 
       renderCheckbox(h) {
-        const { node, config, isDisabled } = this;
+        const { node, code1.config, isDisabled } = this;
         const events = {
           on: { change: this.handleMultiCheckChange },
           nativeOn: {}
         };
 
-        if (config.checkStrictly) { // when every node is selectable, click event should not trigger expand event.
+        if (code1.config.checkStrictly) { // when every node is selectable, click event should not trigger expand event.
           events.nativeOn.click = stopPropagation;
         }
 
@@ -198,10 +198,10 @@
         isChecked,
         isLeaf,
         isDisabled,
-        config,
+        code1.config,
         nodeId
       } = this;
-      const { expandTrigger, checkStrictly, multiple } = config;
+      const { expandTrigger, checkStrictly, multiple } = code1.config;
       const disabled = !checkStrictly && isDisabled;
       const events = { on: {} };
 

@@ -1352,7 +1352,7 @@ if ( $.fn.dataTable.Api ) {
 }
 
 return ColReorder;
-}; // /factory
+}; // /code1.factory
 
 
 // Define as an AMD module if possible

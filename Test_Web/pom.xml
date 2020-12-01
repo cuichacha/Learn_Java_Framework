@@ -16,17 +16,17 @@
     <packaging>war</packaging>
 
     <dependencies>
-        <!-- https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
+        <!-- https://mvnrepository.com/artifact/javax.code1.servlet/javax.code1.servlet-api -->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>javax.servlet-api</artifactId>
+            <groupId>javax.code1.servlet</groupId>
+            <artifactId>javax.code1.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
+        <!-- https://mvnrepository.com/artifact/javax.code1.servlet.jsp/jsp-api -->
         <dependency>
-            <groupId>javax.servlet.jsp</groupId>
+            <groupId>javax.code1.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.1</version>
             <scope>provided</scope>

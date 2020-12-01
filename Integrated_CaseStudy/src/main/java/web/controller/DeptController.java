@@ -1,10 +1,9 @@
 package web.controller;
 
 import com.github.pagehelper.PageInfo;
-import domain.Company;
-import domain.Dept;
-import service.DeptService;
-import service.DeptServiceImpl;
+import code1.domain.Dept;
+import code1.service.DeptService;
+import code1.service.DeptServiceImpl;
 import utils.BeanUtil;
 import utils.ParseUtil;
 
@@ -14,9 +13,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.List;
-import java.util.UUID;
 
 @WebServlet("/system/dept")
 public class DeptController extends HttpServlet {

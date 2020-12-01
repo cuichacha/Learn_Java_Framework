@@ -1652,11 +1652,11 @@
       return undefined
     }
     var def = prop.default;
-    // warn against non-factory defaults for Object & Array
+    // warn against non-code1.factory defaults for Object & Array
     if (isObject(def)) {
       warn(
         'Invalid default value for prop "' + key + '": ' +
-        'Props with type Object/Array must use a factory function ' +
+        'Props with type Object/Array must use a code1.factory function ' +
         'to return the default value.',
         vm
       );
@@ -1669,7 +1669,7 @@
     ) {
       return vm._props[key]
     }
-    // call factory function for non-Function types
+    // call code1.factory function for non-Function types
     // a value is Function if its prototype is function even across different execution context
     return typeof def === 'function' && getType(prop.type) !== 'Function'
       ? def.call(vm)
@@ -1881,7 +1881,7 @@
         // if the user intentionally throws the original error in the handler,
         // do not log it twice
         if (e !== err) {
-          logError(e, null, 'config.errorHandler');
+          logError(e, null, 'code1.config.errorHandler');
         }
       }
     }
@@ -2072,7 +2072,7 @@
       config.keyCodes = new Proxy(config.keyCodes, {
         set: function set (target, key, value) {
           if (isBuiltInModifier(key)) {
-            warn(("Avoid overwriting built-in modifier in config.keyCodes: ." + key));
+            warn(("Avoid overwriting built-in modifier in code1.config.keyCodes: ." + key));
             return false
           } else {
             target[key] = value;
@@ -2107,7 +2107,7 @@
 
     initProxy = function initProxy (vm) {
       if (hasProxy) {
-        // determine which proxy handler to use
+        // determine which code1.proxy handler to use
         var options = vm.$options;
         var handlers = options.render && options.render._withStripped
           ? getHandler
@@ -2564,7 +2564,7 @@
       !hasNormalSlots &&
       !prevSlots.$hasNormal
     ) {
-      // fast path 2: stable scoped slots w/ no normal slots to proxy,
+      // fast path 2: stable scoped slots w/ no normal slots to code1.proxy,
       // only need to normalize once
       return prevSlots
     } else {
@@ -2723,7 +2723,7 @@
   }
 
   /**
-   * Runtime helper for checking keyCodes from config.
+   * Runtime helper for checking keyCodes from code1.config.
    * exposed as Vue.prototype._k
    * passing in eventKeyName as last argument separately for backwards compat
    */
@@ -3191,7 +3191,7 @@
       Ctor = baseCtor.extend(Ctor);
     }
 
-    // if at this stage it's not a constructor or an async component factory,
+    // if at this stage it's not a constructor or an async component code1.factory,
     // reject.
     if (typeof Ctor !== 'function') {
       {
@@ -4679,7 +4679,7 @@
         });
       }
       // static props are already proxied on the component's prototype
-      // during Vue.extend(). We only need to proxy props defined at
+      // during Vue.extend(). We only need to code1.proxy props defined at
       // instantiation here.
       if (!(key in vm)) {
         proxy(vm, "_props", key);
@@ -4703,7 +4703,7 @@
         vm
       );
     }
-    // proxy data on instance
+    // code1.proxy data on instance
     var keys = Object.keys(data);
     var props = vm.$options.props;
     var methods = vm.$options.methods;
@@ -5149,7 +5149,7 @@
       );
       Sub['super'] = Super;
 
-      // For props and computed properties, we define the proxy getters on
+      // For props and computed properties, we define the code1.proxy getters on
       // the Vue instances at extension time, on the extended prototype. This
       // avoids Object.defineProperty calls for each instance created.
       if (Sub.options.props) {
@@ -5370,17 +5370,17 @@
   /*  */
 
   function initGlobalAPI (Vue) {
-    // config
+    // code1.config
     var configDef = {};
     configDef.get = function () { return config; };
     {
       configDef.set = function () {
         warn(
-          'Do not replace the Vue.config object, set individual fields instead.'
+          'Do not replace the Vue.code1.config object, set individual fields instead.'
         );
       };
     }
-    Object.defineProperty(Vue, 'config', configDef);
+    Object.defineProperty(Vue, 'code1.config', configDef);
 
     // exposed util methods.
     // NOTE: these are not considered part of the public API - avoid relying on
@@ -11306,8 +11306,8 @@
           ? ("(" + (el.if) + ")?" + (genChildren(el, state) || 'undefined') + ":undefined")
           : genChildren(el, state) || 'undefined'
         : genElement(el, state)) + "}";
-    // reverse proxy v-slot without scope on this.$slots
-    var reverseProxy = slotScope ? "" : ",proxy:true";
+    // reverse code1.proxy v-slot without scope on this.$slots
+    var reverseProxy = slotScope ? "" : ",code1.proxy:true";
     return ("{key:" + (el.slotTarget || "\"default\"") + ",fn:" + fn + reverseProxy + "}")
   }
 

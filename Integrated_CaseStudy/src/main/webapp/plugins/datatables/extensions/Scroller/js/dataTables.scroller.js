@@ -272,7 +272,7 @@ Scroller.prototype = /** @lends Scroller.prototype */{
 	 * value (relative to the last non-linear positioning).
 	 *  @param {int} iPixels Offset from top to calculate the row number of
 	 *  @param {int} [intParse=true] If an integer value should be returned
-	 *  @param {int} [virtual=false] Perform the calculations in the virtual domain
+	 *  @param {int} [virtual=false] Perform the calculations in the virtual code1.domain
 	 *  @returns {int} Row index
 	 *  @example
 	 *    $(document).ready(function() {
@@ -665,7 +665,7 @@ Scroller.prototype = /** @lends Scroller.prototype */{
 
 
 	/**
-	 * Convert from one domain to another. The physical domain is the actual
+	 * Convert from one code1.domain to another. The physical code1.domain is the actual
 	 * pixel count on the screen, while the virtual is if we had browsers which
 	 * had scrolling containers of infinite height (i.e. the absolute value)
 	 *
@@ -851,7 +851,7 @@ Scroller.prototype = /** @lends Scroller.prototype */{
 	 *
 	 * Note that if the calculated required scrolling height exceeds a maximum
 	 * value (1 million pixels - hard-coded) the forcing element will be set
-	 * only to that maximum value and virtual / physical domain transforms will
+	 * only to that maximum value and virtual / physical code1.domain transforms will
 	 * be used to allow Scroller to display tables of any number of records.
 	 *  @returns {void}
 	 *  @private
@@ -1241,7 +1241,7 @@ if ( $.fn.dataTable.Api ) {
 
 
 return Scroller;
-}; // /factory
+}; // /code1.factory
 
 
 // Define as an AMD module if possible

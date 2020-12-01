@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
+
+    <bean id="userService" class="code1.service.impl.UserServiceImpl"/>
+
+    <bean id="advice" class="code1.aop.Advice"/>
+
+    <aop:config>
+        <aop:aspect ref="advice">
+            <aop:pointcut id="pt" expression="execution(* *..*.find*(..))"/>
+            <aop:before method="method1" pointcut-ref="pt"/>
+            <aop:after method="method2" pointcut-ref="pt"/>
+            <aop:after-returning method="method3" pointcut-ref="pt" returning="obj"/>
+
+        </aop:aspect>
+
+        <aop:aspect ref="advice">
+            <aop:pointcut id="pt2" expression="execution(void code1.service.UserService.save())"/>
+            <aop:before method="method1" pointcut-ref="pt2"/>
+        </aop:aspect>
+    </aop:config>
+
+</beans>

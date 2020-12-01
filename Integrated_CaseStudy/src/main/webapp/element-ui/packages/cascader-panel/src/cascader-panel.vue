@@ -115,20 +115,20 @@ export default {
   },
 
   computed: {
-    config() {
+    code1.config() {
       return merge({ ...DefaultProps }, this.props || {});
     },
     multiple() {
-      return this.config.multiple;
+      return this.code1.config.multiple;
     },
     checkStrictly() {
-      return this.config.checkStrictly;
+      return this.code1.config.checkStrictly;
     },
     leafOnly() {
       return !this.checkStrictly;
     },
     isHoverMenu() {
-      return this.config.expandTrigger === 'hover';
+      return this.code1.config.expandTrigger === 'hover';
     },
     renderLabelFn() {
       return this.renderLabel || this.$scopedSlots.default;
@@ -164,11 +164,11 @@ export default {
 
   methods: {
     initStore() {
-      const { config, options } = this;
-      if (config.lazy && isEmpty(options)) {
+      const { code1.config, options } = this;
+      if (code1.config.lazy && isEmpty(options)) {
         this.lazyLoad();
       } else {
-        this.store = new Store(options, config);
+        this.store = new Store(options, code1.config);
         this.menus = [this.store.getNodes()];
         this.syncMenuState();
       }
@@ -287,10 +287,10 @@ export default {
       this.checkedValue = value;
     },
     lazyLoad(node, onFullfiled) {
-      const { config } = this;
+      const { code1.config } = this;
       if (!node) {
         node = node || { root: true, level: 0 };
-        this.store = new Store([], config);
+        this.store = new Store([], code1.config);
         this.menus = [this.store.getNodes()];
       }
       node.loading = true;
@@ -303,8 +303,8 @@ export default {
         // dispose default value on lazy load mode
         if (Array.isArray(this.checkedValue)) {
           const nodeValue = this.checkedValue[this.loadCount++];
-          const valueKey = this.config.value;
-          const leafKey = this.config.leaf;
+          const valueKey = this.code1.config.value;
+          const leafKey = this.code1.config.leaf;
 
           if (Array.isArray(dataList) && dataList.filter(item => item[valueKey] === nodeValue).length > 0) {
             const checkedNode = this.store.getNodeByValue(nodeValue);
@@ -323,7 +323,7 @@ export default {
 
         onFullfiled && onFullfiled(dataList);
       };
-      config.lazyLoad(node, resolve);
+      code1.config.lazyLoad(node, resolve);
     },
 
     /**
@@ -351,7 +351,7 @@ export default {
       return this.store.getNodeByValue(val);
     },
     getFlattedNodes(leafOnly) {
-      const cached = !this.config.lazy;
+      const cached = !this.code1.config.lazy;
       return this.store.getFlattedNodes(leafOnly, cached);
     },
     getCheckedNodes(leafOnly) {
@@ -366,8 +366,8 @@ export default {
       }
     },
     clearCheckedNodes() {
-      const { config, leafOnly } = this;
-      const { multiple, emitPath } = config;
+      const { code1.config, leafOnly } = this;
+      const { multiple, emitPath } = code1.config;
       if (multiple) {
         this.getCheckedNodes(leafOnly)
           .filter(node => !node.isDisabled)

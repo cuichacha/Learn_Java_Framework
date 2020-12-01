@@ -1,7 +1,7 @@
-import domain.Course;
+import code1.domain.Course;
 import org.junit.Test;
-import service.CourseService;
-import service.CourseServiceImpl;
+import code1.service.CourseService;
+import code1.service.CourseServiceImpl;
 
 public class CourseTest {
     @Test

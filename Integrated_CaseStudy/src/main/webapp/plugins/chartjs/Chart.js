@@ -1387,7 +1387,7 @@
 		currentStep: null, // the current animation step
 		numSteps: 60, // default number of steps
 		easing: "", // the easing to use for this animation
-		render: null, // render function used by the animation service
+		render: null, // render function used by the animation code1.service
 		
 		onAnimationProgress: null, // user specified callback to fire on each step of the animation 
 		onAnimationComplete: null, // user specified callback to fire when the animation finishes
@@ -2220,7 +2220,7 @@
 			clearTimeout(timeout);
 			timeout = setTimeout(function(){
 				each(Chart.instances,function(instance){
-					// If the responsive flag is set in the chart instance config
+					// If the responsive flag is set in the chart instance code1.config
 					// Cascade the resize event down to the chart.
 					if (instance.options.responsive){
 						instance.resize(instance.render, true);

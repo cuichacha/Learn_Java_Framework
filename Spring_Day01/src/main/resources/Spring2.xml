@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="accountService1" class="code2.service.impl.AccountServiceImpl"/>
+
+    <bean id="accountService2" class="code2.service.impl.AccountServiceImpl" scope="singleton"/>
+
+    <bean id="accountService3" class="code2.service.impl.AccountServiceImpl" scope="prototype"/>
+
+<!--    <bean id="userFactory1" class="code2.constructorTest.UserFactory1" factory-method="createUser"/>-->
+
+<!--    <bean id="userFactory2" class="code2.constructorTest.UserFactory2"/>-->
+
+<!--    <bean id="userFactory3" factory-bean="userFactory2" factory-method="createUser"/>-->
+
+    <bean id="theClass" class="code2.constructorTest.TheClass">
+        <property name="name" value="嘿嘿嘿"/>
+    </bean>
+
+    <bean id="user" class="code2.constructorTest.User">
+        <property name="id" value="0"/>
+        <property name="name" value="啦啦啦"/>
+        <property name="theClass" ref="theClass"/>
+    </bean>
+
+    <bean id="person" class="code2.constructorTest.Person">
+        <constructor-arg name="id" value="0"/>
+        <constructor-arg name="name" value="哈哈哈"/>
+        <constructor-arg name="theClass" ref="theClass"/>
+    </bean>
+
+</beans>

@@ -1,11 +1,10 @@
 package web.controller;
 
 import com.github.pagehelper.PageInfo;
-import domain.Company;
-import service.CompanyService;
-import service.CompanyServiceImpl;
+import code1.domain.Company;
+import code1.service.CompanyService;
+import code1.service.CompanyServiceImpl;
 import utils.BeanUtil;
-import utils.ParseUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -14,7 +13,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
-import java.util.UUID;
 
 @WebServlet("/store/company")
 public class CompanyController extends HttpServlet {

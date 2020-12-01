@@ -80,7 +80,7 @@
 		c = consts.event;
 		o.unbind(c.CHECK);
 	},
-	//default event proxy of excheck
+	//default event code1.proxy of excheck
 	_eventProxy = function(e) {
 		var target = e.target,
 		setting = data.getSetting(e.data.treeId),
@@ -324,7 +324,7 @@
 			node.check_Child_State = chkFlag;
 		}
 	},
-	//method of event proxy
+	//method of event code1.proxy
 	_event = {
 
 	},

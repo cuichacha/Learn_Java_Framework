@@ -96,7 +96,7 @@ __webpack_require__.r(__webpack_exports__);
 // EXTERNAL MODULE: external "element-ui/lib/utils/util"
 var util_ = __webpack_require__(3);
 
-// CONCATENATED MODULE: ./packages/table/src/config.js
+// CONCATENATED MODULE: ./packages/table/src/code1.config.js
 
 
 var cellStarts = {

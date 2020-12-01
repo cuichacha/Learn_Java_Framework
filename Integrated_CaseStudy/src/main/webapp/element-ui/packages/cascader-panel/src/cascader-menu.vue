@@ -65,7 +65,7 @@ export default {
           <path style="pointer-events: auto;" fill="transparent" d="M${startX} ${bottom} L${offsetWidth} ${offsetHeight} V${bottom} Z" />
         `;
       } else if (!hoverTimer) {
-        this.hoverTimer = setTimeout(this.clearHoverZone, this.panel.config.hoverThreshold);
+        this.hoverTimer = setTimeout(this.clearHoverZone, this.panel.code1.config.hoverThreshold);
       }
     },
     clearHoverZone() {

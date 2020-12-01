@@ -1155,7 +1155,7 @@ $.fn.DataTable.KeyTable = KeyTable;
 
 
 return KeyTable;
-}; // /factory
+}; // /code1.factory
 
 
 // Define as an AMD module if possible

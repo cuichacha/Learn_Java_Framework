@@ -1007,7 +1007,7 @@ $.fn.DataTable.FixedHeader = FixedHeader;
 
 
 return FixedHeader;
-}; // /factory
+}; // /code1.factory
 
 
 // Define as an AMD module if possible

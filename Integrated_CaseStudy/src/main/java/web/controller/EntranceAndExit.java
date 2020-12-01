@@ -1,11 +1,11 @@
 package web.controller;
 
-import domain.Module;
-import domain.User;
-import service.ModuleService;
-import service.ModuleServiceImpl;
-import service.UserService;
-import service.UserServiceImpl;
+import code1.domain.Module;
+import code1.domain.User;
+import code1.service.ModuleService;
+import code1.service.ModuleServiceImpl;
+import code1.service.UserService;
+import code1.service.UserServiceImpl;
 import utils.MD5Util;
 import utils.ParseUtil;
 

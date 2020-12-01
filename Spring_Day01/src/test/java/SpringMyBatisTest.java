@@ -1,9 +1,8 @@
-import domain.Account;
+import code1.domain.Account;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import service.AccountService;
-import service.impl.AccountServiceImpl;
+import code1.service.AccountService;
 
 import java.util.List;
 

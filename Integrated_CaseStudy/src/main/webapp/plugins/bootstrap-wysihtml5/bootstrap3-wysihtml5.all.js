@@ -79,7 +79,7 @@ var wysihtml5 = {
     
     } else if (typeof exports == "object") {
         // Node/CommonJS style for Browserify
-        module.exports = factory;
+        module.exports = code1.factory;
 */
     } else {
         // No AMD or CommonJS support so we place Rangy in a global variable
@@ -3814,7 +3814,7 @@ var wysihtml5 = {
         /*
          } else if (typeof exports == "object") {
          // Node/CommonJS style for Browserify
-         module.exports = factory;
+         module.exports = code1.factory;
          */
     } else {
         // No AMD or CommonJS support so we use the rangy global variable
@@ -13192,7 +13192,7 @@ wysihtml5.views.View = Base.extend(
  * WYSIHTML5 Editor
  *
  * @param {Element} editableElement Reference to the textarea which should be turned into a rich text interface
- * @param {Object} [config] See defaultConfig object below for explanation of each individual config option
+ * @param {Object} [code1.config] See defaultConfig object below for explanation of each individual code1.config option
  *
  * @events
  *    load

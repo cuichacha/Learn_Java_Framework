@@ -7,14 +7,12 @@ import com.alibaba.excel.event.SyncReadListener;
 import com.alibaba.excel.write.builder.ExcelWriterBuilder;
 import com.alibaba.excel.write.metadata.WriteSheet;
 import com.alibaba.excel.write.metadata.fill.FillConfig;
-import domain.Question;
-import domain.Question_ExcelOperation;
+import code1.domain.Question;
+import code1.domain.Question_ExcelOperation;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class ExcelOperation {
     @Test

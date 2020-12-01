@@ -28,12 +28,12 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 
 		<p>Since CKEditor 4 there are two ways to configure toolbar buttons.</p>
 
-		<h2 class="samples">By <a href="http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-toolbar">config.toolbar</a></h2>
+		<h2 class="samples">By <a href="http://docs.ckeditor.com/#!/api/CKEDITOR.code1.config-cfg-toolbar">code1.config.toolbar</a></h2>
 
 		<p>
 			You can explicitly define which buttons are displayed in which groups and in which order.
 			This is the more precise setting, but less flexible. If newly added plugin adds its
-			own button you'll have to add it manually to your <code>config.toolbar</code> setting as well.
+			own button you'll have to add it manually to your <code>code1.config.toolbar</code> setting as well.
 		</p>
 
 		<p>To add a CKEditor instance with custom toolbar setting, insert the following JavaScript call to your code:</p>
@@ -48,7 +48,7 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 	]
 });</pre>
 
-		<h2 class="samples">By <a href="http://docs.ckeditor.com/#!/api/CKEDITOR.config-cfg-toolbarGroups">config.toolbarGroups</a></h2>
+		<h2 class="samples">By <a href="http://docs.ckeditor.com/#!/api/CKEDITOR.code1.config-cfg-toolbarGroups">code1.config.toolbarGroups</a></h2>
 
 		<p>
 			You can define which groups of buttons (like e.g. <code>basicstyles</code>, <code>clipboard</code>
@@ -99,12 +99,12 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 
 	var buttonsNames;
 
-	CKEDITOR.config.extraPlugins = 'toolbar';
+	CKEDITOR.code1.config.extraPlugins = 'toolbar';
 
 	CKEDITOR.on( 'instanceReady', function( evt ) {
 		var editor = evt.editor,
 			editorCurrent = editor.name == 'editorCurrent',
-			defaultToolbar = !( editor.config.toolbar || editor.config.toolbarGroups || editor.config.removeButtons ),
+			defaultToolbar = !( editor.code1.config.toolbar || editor.code1.config.toolbarGroups || editor.code1.config.removeButtons ),
 			pre = CKEDITOR.document.getById( editor.name + 'Cfg' ),
 			output = '';
 
@@ -120,9 +120,9 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 			buttonsNames = createButtonsNamesHash( editor.ui.items );
 
 		// Toolbar isn't set explicitly, so it was created automatically from toolbarGroups.
-		if ( !editor.config.toolbar ) {
+		if ( !editor.code1.config.toolbar ) {
 			output +=
-				'// Toolbar configuration generated automatically by the editor based on config.toolbarGroups.\n' +
+				'// Toolbar configuration generated automatically by the editor based on code1.config.toolbarGroups.\n' +
 				dumpToolbarConfiguration( editor ) +
 				'\n\n' +
 				'// Toolbar groups configuration.\n' +
@@ -158,7 +158,7 @@ CKEDITOR.replace( <em>'textarea_id'</em>, {
 				output.push( group );
 		}
 
-		return 'config.toolbar' + ( printGroups ? 'Groups' : '' ) + ' = [\n\t' + output.join( ',\n\t' ) + '\n];';
+		return 'code1.config.toolbar' + ( printGroups ? 'Groups' : '' ) + ' = [\n\t' + output.join( ',\n\t' ) + '\n];';
 	}
 
 	function dumpToolbarGroup( group, printGroups ) {

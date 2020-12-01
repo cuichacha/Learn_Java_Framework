@@ -125,7 +125,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 			}
 		});
 
-		var config = {
+		var code1.config = {
 			extraPlugins: 'dialog',
 			toolbar: [ [ 'MyButton' ] ]
 		};
@@ -158,7 +158,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	<textarea cols="80" id="editor1" name="editor1" rows="10">&lt;p&gt;This is some &lt;strong&gt;sample text&lt;/strong&gt;. You are using &lt;a href="http://ckeditor.com/"&gt;CKEditor&lt;/a&gt;.&lt;/p&gt;</textarea>
 	<script>
 		// Replace the <textarea id="editor1"> with an CKEditor instance.
-		CKEDITOR.replace( 'editor1', config );
+		CKEDITOR.replace( 'editor1', code1.config );
 	</script>
 	<p>The below editor modify the dialog definition of the above added dialog using the <code>dialogDefinition</code> event:</p>
 	<ol>
@@ -173,7 +173,7 @@ For licensing, see LICENSE.md or http://ckeditor.com/license
 	<script>
 
 		// Replace the <textarea id="editor1"> with an CKEditor instance.
-		CKEDITOR.replace( 'editor2', config );
+		CKEDITOR.replace( 'editor2', code1.config );
 
 	</script>
 	<div id="footer">

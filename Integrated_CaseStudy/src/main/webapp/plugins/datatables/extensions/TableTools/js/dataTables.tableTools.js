@@ -1144,7 +1144,7 @@ TableTools.prototype = {
 		this.dom.container = document.createElement( this.s.tags.container );
 		this.dom.container.className = this.classes.container;
 
-		/* Row selection config */
+		/* Row selection code1.config */
 		if ( this.s.select.type != 'none' )
 		{
 			this._fnRowSelectConfig();
@@ -3209,7 +3209,7 @@ $.fn.DataTable.TableTools = TableTools;
 
 
 return TableTools;
-}; // /factory
+}; // /code1.factory
 
 
 // Define as an AMD module if possible

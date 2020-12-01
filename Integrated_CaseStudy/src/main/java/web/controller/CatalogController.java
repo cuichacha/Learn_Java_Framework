@@ -1,12 +1,12 @@
 package web.controller;
 
 import com.github.pagehelper.PageInfo;
-import domain.Catalog;
-import domain.Course;
-import service.CatalogService;
-import service.CatalogServiceImpl;
-import service.CourseService;
-import service.CourseServiceImpl;
+import code1.domain.Catalog;
+import code1.domain.Course;
+import code1.service.CatalogService;
+import code1.service.CatalogServiceImpl;
+import code1.service.CourseService;
+import code1.service.CourseServiceImpl;
 import utils.BeanUtil;
 import utils.ParseUtil;
 

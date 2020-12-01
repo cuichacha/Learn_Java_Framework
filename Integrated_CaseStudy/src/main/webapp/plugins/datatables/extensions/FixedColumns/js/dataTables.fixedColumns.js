@@ -1402,7 +1402,7 @@ $.fn.DataTable.FixedColumns = FixedColumns;
 
 
 return FixedColumns;
-}; // /factory
+}; // /code1.factory
 
 
 // Define as an AMD module if possible

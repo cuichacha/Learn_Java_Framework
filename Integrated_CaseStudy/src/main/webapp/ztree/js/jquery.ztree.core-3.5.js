@@ -202,7 +202,7 @@
 		.unbind(c.SELECTED)
 		.unbind(c.UNSELECTED);
 	},
-	//default event proxy of core
+	//default event code1.proxy of core
 	_eventProxy = function(event) {
 		var target = event.target,
 		setting = data.getSetting(event.data.treeId),
@@ -622,7 +622,7 @@
 			}
 		}
 	},
-	//method of event proxy
+	//method of event code1.proxy
 	event = {
 		bindEvent: function(setting) {
 			for (var i=0, j=_init.bind.length; i<j; i++) {

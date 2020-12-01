@@ -1064,7 +1064,7 @@ var render = function() {
           }
         ],
         ref: "resizeProxy",
-        staticClass: "el-table__column-resize-proxy"
+        staticClass: "el-table__column-resize-code1.proxy"
       })
     ]
   )

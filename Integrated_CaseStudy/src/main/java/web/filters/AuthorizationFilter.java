@@ -1,8 +1,8 @@
 package web.filters;
 
 
-import service.UserService;
-import service.UserServiceImpl;
+import code1.service.UserService;
+import code1.service.UserServiceImpl;
 
 import javax.servlet.*;
 import javax.servlet.annotation.WebFilter;

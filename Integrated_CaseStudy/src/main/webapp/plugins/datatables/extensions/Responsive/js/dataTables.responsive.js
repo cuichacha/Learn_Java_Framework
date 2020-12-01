@@ -853,7 +853,7 @@ $(document).on( 'init.dt.dtr', function (e, settings, json) {
 } );
 
 return Responsive;
-}; // /factory
+}; // /code1.factory
 
 
 // Define as an AMD module if possible

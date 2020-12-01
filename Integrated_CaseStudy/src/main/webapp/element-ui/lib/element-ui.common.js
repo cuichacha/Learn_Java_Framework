@@ -9935,7 +9935,7 @@ var tablevue_type_template_id_493fe34e_render = function() {
           }
         ],
         ref: "resizeProxy",
-        staticClass: "el-table__column-resize-proxy"
+        staticClass: "el-table__column-resize-code1.proxy"
       })
     ]
   )
@@ -13992,7 +13992,7 @@ src_table.install = function (Vue) {
 };
 
 /* harmony default export */ var packages_table = (src_table);
-// CONCATENATED MODULE: ./packages/table/src/config.js
+// CONCATENATED MODULE: ./packages/table/src/code1.config.js
 
 
 var cellStarts = {

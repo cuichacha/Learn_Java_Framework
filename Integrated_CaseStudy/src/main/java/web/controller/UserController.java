@@ -1,13 +1,11 @@
 package web.controller;
 
 import com.github.pagehelper.PageInfo;
-import domain.Dept;
-import domain.Role;
-import domain.User;
-import domain.UserRole;
-import service.*;
+import code1.domain.Dept;
+import code1.domain.User;
+import code1.domain.UserRole;
+import code1.service.*;
 import utils.BeanUtil;
-import utils.MD5Util;
 import utils.ParseUtil;
 
 import javax.servlet.ServletException;
@@ -17,7 +15,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.List;
-import java.util.UUID;
 
 @WebServlet("/system/user")
 public class UserController extends HttpServlet {

@@ -208,7 +208,7 @@
         width: layout.scrollY ? layout.gutterWidth + 'px' : '0',
         height: layout.headerHeight + 'px'
       }"></div>
-    <div class="el-table__column-resize-proxy" ref="resizeProxy" v-show="resizeProxyVisible"></div>
+    <div class="el-table__column-resize-code1.proxy" ref="resizeProxy" v-show="resizeProxyVisible"></div>
   </div>
 </template>
 

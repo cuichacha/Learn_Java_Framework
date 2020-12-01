@@ -297,7 +297,7 @@
 - Badge
   - Actualizado el check del prop badge (#16198 by @iamkun)
 - Avatar
-  - Actualizado el var del config del theme (#16202 by @luckyCao)
+  - Actualizado el var del code1.config del theme (#16202 by @luckyCao)
 - I18n
   - Actualizada la traducción del portugués (#15776 by @gigioSouza)
   - Actualizada la traducción del idioma Farsi (#15881 by @pamenary)
@@ -545,7 +545,7 @@
 
   - Arreglado un error del changelog v2.6.0 (#15026 by @iamkun)
 
-  - Actualizado build config (#14821 by @abc3660170)
+  - Actualizado build code1.config (#14821 by @abc3660170)
 
   - Agregado hmr (#15221 by @SimonaliaChen)
 

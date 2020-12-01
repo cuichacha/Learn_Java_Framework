@@ -298,7 +298,7 @@
 - Badge
   - Update badge prop check (#16198 by @iamkun)
 - Avatar
-  - Update theme config var (#16202 by @luckyCao)
+  - Update theme code1.config var (#16202 by @luckyCao)
 - I18n
   - Update pt-br.js (#15776 by @gigioSouza)
   - Update Farsi translation (#15881 by @pamenary)
@@ -455,7 +455,7 @@
 - Docs
   - Fix link underline color (#15265 by @iamkun)
 - Other
-  - Fix migrating config not compatible with camel case props and events (#15260 by @SimonaliaChen)
+  - Fix migrating code1.config not compatible with camel case props and events (#15260 by @SimonaliaChen)
 
 ### 2.8.0
 
@@ -542,7 +542,7 @@
   - Hide demo description when it's empty (#15014 by @ziyoung)
   - Display dev server info by default by @iamkun)
   - Fix 2.6.0 changelog error (#15026 by @iamkun)
-  - Update build config (#14821 by @abc3660170)
+  - Update build code1.config (#14821 by @abc3660170)
   - Add hmr (#15221 by @SimonaliaChen)
   - Use sourcemap in dev environment (#15087 by @ibufu)
 Docs
@@ -550,7 +550,7 @@ Docs
   - Fix upload doc error (#15023 by @iamkun)
   - Update Form custom validator doc (#15040 by @iamkun)
   - Update Tabs docs to display vertical tabs (#15053 by @iamkun)
-  - Use eleme.cn as domain (#15139 by @ziyoung)
+  - Use eleme.cn as code1.domain (#15139 by @ziyoung)
   - Fix Image route name (#15194 by @iamkun)
   - Remove duplicated fr translation (#15207 by @iamkun)
 
@@ -778,7 +778,7 @@ Docs
 
 #### Bug fixes
 
-- Build: Fix babel config issue which lead to collapse transition broken (by @island205 in #14282)
+- Build: Fix babel code1.config issue which lead to collapse transition broken (by @island205 in #14282)
 
 ### 2.5.3
 
@@ -1368,7 +1368,7 @@ Docs
 - Added `show-timeout` and `hide-timeout` attributes for SubMenu, #8934 (by @HugoLew)
 - Fixed missing Tooltip style of `show-overflow-tooltip` when Table is imported on demand, #9130
 - Fixed Table column's sorting malfunctioning after `clearSort` is executed on that column, #9100 (by @zEmily)
-- i18n config file for Czech is renamed from `cz` to `cs-CZ`, #9164
+- i18n code1.config file for Czech is renamed from `cz` to `cs-CZ`, #9164
 
 ### 2.0.10
 
@@ -1480,7 +1480,7 @@ Docs
   - All existing icons are redesigned. Some new icons are added
   - Added a series of breakpoint-based utility classes that hide elements when the viewport size meets certain conditions
   - Added layout components: Container, Header, Aside, Main, Footer
-  - Now you can configure component sizes globally. When importing Element, you can add a global config object with a `size` prop to configure default sizes for all components.
+  - Now you can configure component sizes globally. When importing Element, you can add a global code1.config object with a `size` prop to configure default sizes for all components.
 - Button
   - Added `round` attribute. It's used for round-cornered Buttons #6643
 - TimeSelect

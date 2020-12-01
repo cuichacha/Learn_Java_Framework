@@ -3905,7 +3905,7 @@ $.extend(Datepicker.prototype, {
 	//Keep track of the maximum number of rows displayed (see #7043)
 	maxRows: 4,
 
-	// TODO rename to "widget" when switching to widget factory
+	// TODO rename to "widget" when switching to widget code1.factory
 	_widgetDatepicker: function() {
 		return this.dpDiv;
 	},
@@ -15545,7 +15545,7 @@ var tabs = $.widget( "ui.tabs", {
 		}
 
 		if ( key === "disabled" ) {
-			// don't use the widget factory's disabled handling
+			// don't use the widget code1.factory's disabled handling
 			this._setupDisabled( value );
 			return;
 		}

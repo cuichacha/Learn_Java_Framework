@@ -1,11 +1,7 @@
-import com.github.pagehelper.PageInfo;
-import domain.Dept;
-import domain.User;
 import org.junit.Test;
-import service.UserService;
-import service.UserServiceImpl;
+import code1.service.UserService;
+import code1.service.UserServiceImpl;
 
-import java.util.Date;
 import java.util.List;
 
 public class UserTest {

@@ -115,7 +115,7 @@
 		o.unbind(c.DRAGMOVE);
 		o.unbind(c.DROP);
 	},
-	//default event proxy of exedit
+	//default event code1.proxy of exedit
 	_eventProxy = function(e) {
 		var target = e.target,
 		setting = data.getSetting(e.data.treeId),
@@ -248,7 +248,7 @@
 			}
 		}
 	},
-	//method of event proxy
+	//method of event code1.proxy
 	_event = {
 
 	},

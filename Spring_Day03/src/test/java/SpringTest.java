@@ -3,10 +3,10 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import service.UserService;
+import code1.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:Spring.xml")
+@ContextConfiguration("classpath:Spring1.xml")
 public class SpringTest {
 
     @Autowired
@@ -20,6 +20,10 @@ public class SpringTest {
     @Test
     public void test2() {
         String s = userService.findById("2");
+    }
 
+    @Test
+    public void test3() {
+        userService.save();
     }
 }

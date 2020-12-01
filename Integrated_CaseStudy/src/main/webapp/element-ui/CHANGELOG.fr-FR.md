@@ -298,7 +298,7 @@
 - Badge
   - Update badge prop check (#16198 by @iamkun)
 - Avatar
-  - Update theme config var (#16202 by @luckyCao)
+  - Update theme code1.config var (#16202 by @luckyCao)
 - I18n
   - Update pt-br.js (#15776 by @gigioSouza)
   - Update Farsi translation (#15881 by @pamenary)

@@ -120,7 +120,7 @@ var requirejs, require, define;
             }
         }
 
-        //Apply map config if available.
+        //Apply map code1.config if available.
         if ((baseParts || starMap) && map) {
             nameParts = name.split('/');
 
@@ -128,12 +128,12 @@ var requirejs, require, define;
                 nameSegment = nameParts.slice(0, i).join("/");
 
                 if (baseParts) {
-                    //Find the longest baseName segment match in the config.
+                    //Find the longest baseName segment match in the code1.config.
                     //So, do joins on the biggest to smallest lengths of baseParts.
                     for (j = baseParts.length; j > 0; j -= 1) {
                         mapValue = map[baseParts.slice(0, j).join('/')];
 
-                        //baseName segment has  config, find if it has one for
+                        //baseName segment has  code1.config, find if it has one for
                         //this name.
                         if (mapValue) {
                             mapValue = mapValue[nameSegment];
@@ -153,7 +153,7 @@ var requirejs, require, define;
 
                 //Check for a star map match, but just hold on to it,
                 //if there is a shorter segment match later in a matching
-                //config, then favor over this star map.
+                //code1.config, then favor over this star map.
                 if (!foundStarMap && starMap && starMap[nameSegment]) {
                     foundStarMap = starMap[nameSegment];
                     starI = i;
@@ -375,7 +375,7 @@ var requirejs, require, define;
             //Normalize module name, if it contains . or ..
             return callDep(makeMap(deps, callback).f);
         } else if (!deps.splice) {
-            //deps is a config object, not an array.
+            //deps is a code1.config object, not an array.
             config = deps;
             if (config.deps) {
                 req(config.deps, config.callback);
@@ -424,8 +424,8 @@ var requirejs, require, define;
     };
 
     /**
-     * Just drops the config on the floor, but returns req in case
-     * the config return value is used.
+     * Just drops the code1.config on the floor, but returns req in case
+     * the code1.config return value is used.
      */
     req.config = function (cfg) {
         return req(cfg);
@@ -444,7 +444,7 @@ var requirejs, require, define;
         //This module may not have dependencies
         if (!deps.splice) {
             //deps is not an array, so probably means
-            //an object literal or factory function for
+            //an object literal or code1.factory function for
             //the value. Adjust args.
             callback = deps;
             deps = [];

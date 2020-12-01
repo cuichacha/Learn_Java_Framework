@@ -185,7 +185,7 @@ if ( DataTable.TableTools ) {
 	} );
 }
 
-}; // /factory
+}; // /code1.factory
 
 
 // Define as an AMD module if possible

@@ -1,11 +1,8 @@
 import com.github.pagehelper.PageInfo;
-import domain.Company;
-import domain.Dept;
+import code1.domain.Dept;
 import org.junit.Test;
-import service.CompanyService;
-import service.CompanyServiceImpl;
-import service.DeptService;
-import service.DeptServiceImpl;
+import code1.service.DeptService;
+import code1.service.DeptServiceImpl;
 
 public class DeptTest {
     @Test

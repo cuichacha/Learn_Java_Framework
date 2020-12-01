@@ -1,9 +1,9 @@
 package web.controller;
 
 import com.github.pagehelper.PageInfo;
-import domain.Module;
-import service.ModuleService;
-import service.ModuleServiceImpl;
+import code1.domain.Module;
+import code1.service.ModuleService;
+import code1.service.ModuleServiceImpl;
 import utils.BeanUtil;
 import utils.ParseUtil;
 

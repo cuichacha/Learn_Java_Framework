@@ -75,7 +75,7 @@
           v-show="!filtering"
           v-model="checkedValue"
           :options="options"
-          :props="config"
+          :props="code1.config"
           :border="false"
           :render-label="$scopedSlots.default"
           @expand-change="handleExpandChange"
@@ -257,8 +257,8 @@ export default {
     isDisabled() {
       return this.disabled || (this.elForm || {}).disabled;
     },
-    config() {
-      const config = this.props || {};
+    code1.config() {
+      const code1.config = this.props || {};
       const { $attrs } = this;
 
       Object
@@ -266,21 +266,21 @@ export default {
         .forEach(oldProp => {
           const { newProp, type } = MigratingProps[oldProp];
           let oldValue = $attrs[oldProp] || $attrs[kebabCase(oldProp)];
-          if (isDef(oldProp) && !isDef(config[newProp])) {
+          if (isDef(oldProp) && !isDef(code1.config[newProp])) {
             if (type === Boolean && oldValue === '') {
               oldValue = true;
             }
-            config[newProp] = oldValue;
+            code1.config[newProp] = oldValue;
           }
         });
 
-      return config;
+      return code1.config;
     },
     multiple() {
-      return this.config.multiple;
+      return this.code1.config.multiple;
     },
     leafOnly() {
-      return !this.config.checkStrictly;
+      return !this.code1.config.checkStrictly;
     },
     readonly() {
       return !this.filterable || this.multiple;
@@ -311,7 +311,7 @@ export default {
     },
     checkedValue(val) {
       const { value, dropDownVisible } = this;
-      const { checkStrictly, multiple } = this.config;
+      const { checkStrictly, multiple } = this.code1.config;
 
       if (!isEqual(val, value) || isUndefined(value)) {
         this.computePresentContent();
@@ -477,7 +477,7 @@ export default {
     computePresentContent() {
       // nextTick is required, because checked nodes may not change right now
       this.$nextTick(() => {
-        if (this.config.multiple) {
+        if (this.code1.config.multiple) {
           this.computePresentTags();
           this.presentText = this.presentTags.length ? ' ' : null;
         } else {
@@ -486,10 +486,10 @@ export default {
       });
     },
     computePresentText() {
-      const { checkedValue, config } = this;
+      const { checkedValue, code1.config } = this;
       if (!isEmpty(checkedValue)) {
         const node = this.panel.getNodeByValue(checkedValue);
-        if (node && (config.checkStrictly || node.isLeaf)) {
+        if (node && (code1.config.checkStrictly || node.isLeaf)) {
           this.presentText = node.getText(this.showAllLevels, this.separator);
           return;
         }

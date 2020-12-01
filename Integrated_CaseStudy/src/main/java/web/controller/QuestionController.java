@@ -1,11 +1,10 @@
 package web.controller;
 
 import com.github.pagehelper.PageInfo;
-import domain.Catalog;
-import domain.Company;
-import domain.Question;
-import service.*;
-import utils.BeanUtil;
+import code1.domain.Catalog;
+import code1.domain.Company;
+import code1.domain.Question;
+import code1.service.*;
 import utils.FileBeanUtil;
 import utils.FileUtil;
 import utils.ParseUtil;

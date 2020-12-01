@@ -1,29 +1,20 @@
 package web.controller;
 
 import com.github.pagehelper.PageInfo;
-import com.github.pagehelper.util.StringUtil;
-import domain.Company;
-import domain.Question;
-import domain.QuestionItem;
+import code1.domain.QuestionItem;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.IOUtils;
-import service.QuestionItemService;
-import service.QuestionItemServiceImpl;
+import code1.service.QuestionItemService;
+import code1.service.QuestionItemServiceImpl;
 import utils.BeanUtil;
-import utils.FileBeanUtil;
 import utils.FileUtil;
 import utils.ParseUtil;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.StringWriter;
 import java.util.List;
 
 //@MultipartConfig
