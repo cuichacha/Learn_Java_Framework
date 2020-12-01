@@ -1,17 +1,14 @@
-package code1.factory;
+package code2.factory;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
 
 import javax.sql.DataSource;
 
-@Component
-@PropertySource("classpath:jdbc.properties")
+
 public class JDBCFactory {
     @Value("${jdbc.driver}")
     private String driverClassName;
@@ -22,14 +19,14 @@ public class JDBCFactory {
     @Value("${jdbc.password}")
     private String password;
 
-    @Bean("dataSource")
+    @Bean
     public DataSource getDataSource() {
-        DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setDriverClassName(driverClassName);
-        dataSource.setUrl(url);
-        dataSource.setUsername(username);
-        dataSource.setPassword(password);
-        return dataSource;
+        DruidDataSource druidDataSource = new DruidDataSource();
+        druidDataSource.setDriverClassName(driverClassName);
+        druidDataSource.setUrl(url);
+        druidDataSource.setUsername(username);
+        druidDataSource.setPassword(password);
+        return druidDataSource;
     }
 
     @Bean
@@ -42,7 +39,7 @@ public class JDBCFactory {
     @Bean
     public static MapperScannerConfigurer getMapperScannerConfigurer() {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
-        mapperScannerConfigurer.setBasePackage("code1.dao");
+        mapperScannerConfigurer.setBasePackage("code2.dao");
         return mapperScannerConfigurer;
     }
 }
