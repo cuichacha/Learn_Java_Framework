@@ -18,15 +18,15 @@
     <dependencies>
         <!-- https://mvnrepository.com/artifact/javax.code1.servlet/javax.code1.servlet-api -->
         <dependency>
-            <groupId>javax.code1.servlet</groupId>
-            <artifactId>javax.code1.servlet-api</artifactId>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/javax.code1.servlet.jsp/jsp-api -->
         <dependency>
-            <groupId>javax.code1.servlet.jsp</groupId>
+            <groupId>javax.servlet.jsp</groupId>
             <artifactId>jsp-api</artifactId>
             <version>2.1</version>
             <scope>provided</scope>
@@ -91,7 +91,7 @@
 
         <!-- https://mvnrepository.com/artifact/javax.code1.servlet/jstl -->
         <dependency>
-            <groupId>javax.code1.servlet</groupId>
+            <groupId>javax.servlet</groupId>
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>

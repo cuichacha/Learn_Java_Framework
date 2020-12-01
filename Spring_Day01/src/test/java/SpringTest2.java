@@ -1,3 +1,4 @@
+import code2.collectionTest.TheCollection;
 import code2.constructorTest.Person;
 import code2.constructorTest.TheClass;
 import code2.constructorTest.User;
@@ -6,6 +7,8 @@ import code2.service.AccountService;
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+import java.util.Arrays;
 
 public class SpringTest2 {
     ApplicationContext applicationContext = new ClassPathXmlApplicationContext("Spring2.xml");
@@ -66,5 +69,15 @@ public class SpringTest2 {
         System.out.println(person.getName());
         TheClass theClass = person.getTheClass();
         System.out.println(theClass.getName());
+    }
+
+    @Test
+    public void test8() {
+        TheCollection theCollection = (TheCollection) applicationContext.getBean("theCollection");
+        System.out.println(Arrays.toString(theCollection.getIntArr()));
+        System.out.println(theCollection.getList());
+        System.out.println(theCollection.getSet());
+        System.out.println(theCollection.getMap());
+        System.out.println(theCollection.getProperties());
     }
 }

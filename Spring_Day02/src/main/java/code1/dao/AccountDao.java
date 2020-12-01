@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+
 public interface AccountDao {
 
     @Insert("insert into account(name,money)values(#{name},#{money})")

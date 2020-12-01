@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/util https://www.springframework.org/schema/util/spring-util.xsd">
 
     <bean id="accountService1" class="code2.service.impl.AccountServiceImpl"/>
 
@@ -29,6 +29,46 @@
         <constructor-arg name="id" value="0"/>
         <constructor-arg name="name" value="哈哈哈"/>
         <constructor-arg name="theClass" ref="theClass"/>
+    </bean>
+
+    <bean id="theCollection" class="code2.collectionTest.TheCollection">
+        <property name="intArr">
+            <array>
+                <value>111</value>
+                <value>222</value>
+            </array>
+        </property>
+
+        <property name="list">
+            <util:list>
+                <value>嘿嘿嘿</value>
+                <value>哈哈哈</value>
+            </util:list>
+        </property>
+
+        <property name="set">
+            <util:set>
+                <value>嘟嘟嘟</value>
+                <value>噜噜噜</value>
+                <value>1</value>
+                <value>1</value>
+            </util:set>
+        </property>
+
+        <property name="map">
+            <util:map>
+                <entry key="1" value="1"/>
+                <entry key="2" value="3"/>
+                <entry key="3" value="3"/>
+            </util:map>
+        </property>
+
+        <property name="properties">
+            <props>
+                <prop key="1">1</prop>
+                <prop key="2">2</prop>
+            </props>
+        </property>
     </bean>
 
 </beans>
