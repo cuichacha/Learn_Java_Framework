@@ -6,7 +6,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import code1.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:Spring1.xml")
+@ContextConfiguration("classpath:SpringAOP1.xml")
 public class SpringTest {
 
     @Autowired
