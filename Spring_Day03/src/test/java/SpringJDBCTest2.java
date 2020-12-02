@@ -1,18 +1,23 @@
-import code1.service.AccountService;
+import code2.config.AppConfig;
+import code2.domain.Account;
+import code2.service.AccountService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.util.List;
+
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration("classpath:SpringTransaction1.xml")
-public class SpringTransactionTest {
+@ContextConfiguration(classes = AppConfig.class)
+public class SpringJDBCTest2 {
     @Autowired
     private AccountService accountService;
 
     @Test
-    public void test1() {
-        accountService.transfer("Tom", "Sam", 100D);
+    public void test() {
+        List<Account> accounts = accountService.findAll();
+        System.out.println(accounts);
     }
 }

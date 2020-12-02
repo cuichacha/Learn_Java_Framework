@@ -1,6 +1,6 @@
-import code2.config.AppConfig;
-import code2.domain.Account;
-import code2.service.AccountService;
+import code4.config.AppConfig;
+import code4.domain.Account;
+import code4.service.AccountService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,12 +11,12 @@ import java.util.List;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(classes = AppConfig.class)
-public class SpringJDBC {
+public class SpringJDBCTest4 {
     @Autowired
     private AccountService accountService;
 
     @Test
-    public void test() {
+    public void test1() {
         List<Account> accounts = accountService.findAll();
         System.out.println(accounts);
     }
