@@ -7,7 +7,7 @@ import code1.service.UserService;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath:SpringAOP1.xml")
-public class SpringTest {
+public class SpringTest1 {
 
     @Autowired
     private UserService userService;
