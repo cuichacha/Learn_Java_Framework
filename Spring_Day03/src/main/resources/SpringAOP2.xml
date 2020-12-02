@@ -3,13 +3,13 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
-    <bean id="xxService" class="code2.service.impl.XXServiceImpl"/>
+    <bean id="aopTest" class="code2.aoptest.AopTest"/>
     
     <bean id="advice" class="code2.aop.Advice"/>
     
     <aop:config>
         <aop:aspect ref="advice">
-            <aop:pointcut id="pt" expression="execution(* code2.service.impl.*.*(..))"/>
+            <aop:pointcut id="pt" expression="execution(* code2.aoptest.*.*(..))"/>
             <aop:before method="enhancedMethod1" pointcut-ref="pt"/>
         </aop:aspect>
     </aop:config>
