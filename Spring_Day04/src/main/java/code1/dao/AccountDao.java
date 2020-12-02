@@ -5,9 +5,9 @@ import org.apache.ibatis.annotations.Update;
 
 public interface AccountDao {
 
-    @Update("update db_spring set money = money + #{money} where name = #{name}")
-    public abstract void inMonet(@Param("name") String name, @Param("money") Double money);
+    @Update("update account set money = money + #{money} where name = #{name}")
+    public abstract void inMoney(@Param("name") String name, @Param("money") Double money);
 
-    @Update("update db_spring set money = money - #{money} where name = #{name}")
-    public abstract void outMonet(@Param("name") String name, @Param("money") Double money);
+    @Update("update account set money = money - #{money} where name = #{name}")
+    public abstract void outMoney(@Param("name") String name, @Param("money") Double money);
 }
