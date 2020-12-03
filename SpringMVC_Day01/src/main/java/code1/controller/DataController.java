@@ -1,7 +1,10 @@
 package code1.controller;
 
 import code1.domain.TestBean2;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -35,6 +38,23 @@ public class DataController {
         modelAndView.addObject("aTestBean", testBean2);
         modelAndView.setViewName("Test");
         return modelAndView;
+    }
+
+    @RequestMapping("/Data5")
+    public String test5(Model model) {
+        model.addAttribute("name", "啦啦啦");
+        model.addAttribute("age", 0);
+        return "Test";
+    }
+
+    @RequestMapping("/Data6")
+    @ResponseBody
+    public String test6() throws JsonProcessingException {
+        TestBean2 testBean2 = new TestBean2();
+        testBean2.setName("嘿嘿嘿");
+        testBean2.setAge(0);
+        ObjectMapper objectMapper = new ObjectMapper();
+        return objectMapper.writeValueAsString(testBean2);
     }
 
 }

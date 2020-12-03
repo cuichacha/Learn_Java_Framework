@@ -11,8 +11,8 @@
     <title>Title</title>
 </head>
 <body>
-Hello
+Hello <br>
 ${aThing} <br>
-${aTestBean}
+${aTestBean} <br>
 </body>
 </html>
