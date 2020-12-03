@@ -12,5 +12,7 @@
 </head>
 <body>
 Hello
+${aThing} <br>
+${aTestBean}
 </body>
 </html>
