@@ -15,20 +15,20 @@ public class DataController {
     public String test1(@RequestHeader("Accept-Encoding") String head, @RequestParam String username) {
         System.out.println(head);
         System.out.println(username);
-        return "Test";
+        return "Test1";
     }
 
     @RequestMapping("/Data2")
     public String test2(@CookieValue("JSESSIONID") String jsessionid) {
         System.out.println(jsessionid);
-        return "Test";
+        return "Test1";
     }
 
     @RequestMapping("/Data3")
     public String test3(@SessionAttribute("name") String name, @SessionAttribute("age") int age) {
         System.out.println(name);
         System.out.println(age);
-        return "Test";
+        return "Test1";
     }
 
     @RequestMapping("/Data4")
@@ -36,7 +36,7 @@ public class DataController {
         TestBean2 testBean2 = new TestBean2();
         modelAndView.addObject("aThing", "something");
         modelAndView.addObject("aTestBean", testBean2);
-        modelAndView.setViewName("Test");
+        modelAndView.setViewName("Test1");
         return modelAndView;
     }
 
@@ -44,7 +44,7 @@ public class DataController {
     public String test5(Model model) {
         model.addAttribute("name", "啦啦啦");
         model.addAttribute("age", 0);
-        return "Test";
+        return "Test1";
     }
 
     @RequestMapping("/Data6")

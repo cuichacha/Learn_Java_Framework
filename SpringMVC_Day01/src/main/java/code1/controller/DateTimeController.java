@@ -12,12 +12,12 @@ public class DateTimeController {
     @RequestMapping("/Date1")
     public String test1(@DateTimeFormat(pattern = "yyyy-MM-dd")Date date) {
         System.out.println(date);
-        return "/Test.jsp";
+        return "Test1";
     }
 
     @RequestMapping("/Date2")
     public String test2(Date date) {
         System.out.println(date);
-        return "/Test.jsp";
+        return "Test1";
     }
 }
