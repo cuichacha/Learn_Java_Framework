@@ -6,9 +6,15 @@
 
     <mvc:annotation-driven/>
 
-    <context:component-scan base-package="code1.controller"/>
+    <context:component-scan base-package="code1.controller, code1.exception"/>
 
-    <mvc:annotation-driven/>
+    <mvc:annotation-driven>
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="defaultCharset" value="UTF-8"/>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
 
     <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/"/>
