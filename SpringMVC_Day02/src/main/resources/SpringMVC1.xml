@@ -6,7 +6,7 @@
 
     <mvc:annotation-driven/>
 
-    <context:component-scan base-package="code1.controller, code1.exception"/>
+    <context:component-scan base-package="code1.controller, code1.exception, code1.upload, code1.restful"/>
 
     <mvc:annotation-driven>
         <mvc:message-converters>
@@ -27,5 +27,9 @@
             <bean class="code1.interceptor.MyInterceptor"/>
         </mvc:interceptor>
     </mvc:interceptors>
+
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="maxUploadSize" value="102400000"/>
+    </bean>
 
 </beans>
