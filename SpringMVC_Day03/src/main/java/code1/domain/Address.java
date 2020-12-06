@@ -1,9 +1,11 @@
 package code1.domain;
 
 
-
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+//import javax.validation.constraints.NotBlank;
+//import javax.validation.constraints.Size;
 //嵌套校验的实体中，对每个属性正常添加校验规则即可
 public class Address {
     @NotBlank(message = "请输入省份名称")
