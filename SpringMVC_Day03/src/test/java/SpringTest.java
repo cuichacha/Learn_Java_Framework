@@ -1,3 +1,4 @@
+import code2.controller.UserController;
 import code2.service.UserService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -11,8 +12,10 @@ public class SpringTest {
     @Autowired
     private UserService userService;
 
+
     @Test
     public void test1() {
         System.out.println(userService.findById(2));
     }
+
 }
