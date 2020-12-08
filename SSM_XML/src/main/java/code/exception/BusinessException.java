@@ -1,7 +1,7 @@
-package code2.exception;
+package code.exception;
 
-public class BusinessException extends RuntimeException{
-    private Integer getFailure;
+public class BusinessException extends RuntimeException {
+    private Integer code;
 
     public BusinessException() {
     }
@@ -22,9 +22,9 @@ public class BusinessException extends RuntimeException{
         super(message, cause, enableSuppression, writableStackTrace);
     }
 
-    public BusinessException(String message, Integer getFailure) {
+    public BusinessException(String message, Integer code) {
         super(message);
-        this.getFailure = getFailure;
+        this.code = code;
     }
 
     @Override
