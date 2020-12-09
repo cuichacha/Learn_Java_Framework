@@ -1,6 +1,7 @@
 package code.factory;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.pagehelper.PageInterceptor;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.mapper.MapperScannerConfigurer;
 import org.springframework.beans.factory.annotation.Value;
@@ -8,6 +9,7 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.PropertySource;
 
 import javax.sql.DataSource;
+import java.util.Properties;
 
 @PropertySource("classpath:jdbc.properties")
 public class JDBCFactory {
@@ -34,6 +36,13 @@ public class JDBCFactory {
     public SqlSessionFactoryBean getSqlSessionFactoryBean(DataSource dataSource) {
         SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
         sqlSessionFactoryBean.setDataSource(dataSource);
+
+        PageInterceptor pageInterceptor = new PageInterceptor();
+        Properties properties = new Properties();
+        properties.setProperty("helperDialect", "mysql");
+        properties.setProperty("reasonable", "true");
+        pageInterceptor.setProperties(properties);
+        sqlSessionFactoryBean.setPlugins(pageInterceptor);
         return sqlSessionFactoryBean;
     }
 

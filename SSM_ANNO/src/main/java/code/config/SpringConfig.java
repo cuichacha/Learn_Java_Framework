@@ -9,9 +9,9 @@ import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
-@ComponentScan({"code.dao", "code.service", "code.aop"})
+@ComponentScan({"code.dao", "code.service"})
 @Import({JDBCFactory.class, TransactionFactory.class})
-@EnableAspectJAutoProxy
+//@EnableAspectJAutoProxy
 @EnableTransactionManagement
 public class SpringConfig {
 
