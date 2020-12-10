@@ -24,7 +24,7 @@ public class MyWebXml extends AbstractDispatcherServletInitializer {
     @Override
     protected WebApplicationContext createRootApplicationContext() {
         AnnotationConfigWebApplicationContext annotationConfigWebApplicationContext = new AnnotationConfigWebApplicationContext();
-        annotationConfigWebApplicationContext.register(SpringConfig.class);
+        annotationConfigWebApplicationContext.register(SpringConfig.class, AopConfig.class);
         return annotationConfigWebApplicationContext;
     }
 
