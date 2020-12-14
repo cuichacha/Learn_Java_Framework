@@ -3,8 +3,11 @@ package code;
 import org.apache.curator.RetryPolicy;
 import org.apache.curator.framework.CuratorFramework;
 import org.apache.curator.framework.CuratorFrameworkFactory;
+import org.apache.curator.framework.api.BackgroundCallback;
+import org.apache.curator.framework.api.CuratorEvent;
 import org.apache.curator.retry.ExponentialBackoffRetry;
 import org.apache.zookeeper.CreateMode;
+import org.apache.zookeeper.data.Stat;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -72,7 +75,52 @@ public class CuratorTest {
         System.out.println(strings);
     }
 
+    @Test
+    public void testGet3() throws Exception {
+        Stat stat = new Stat();
+        System.out.println(stat);
+        client.getData().storingStatIn(stat).forPath("/");
+        System.out.println(stat);
+    }
 
+    @Test
+    public void testSet1() throws Exception {
+        client.setData().forPath("/", "Hello".getBytes());
+    }
+
+    @Test
+    public void testSet2() throws Exception {
+        Stat stat = new Stat();
+        client.getData().storingStatIn(stat).forPath("/");
+        int version = stat.getVersion();
+        System.out.println(version);
+        client.setData().withVersion(version).forPath("/", "Hey".getBytes());
+    }
+
+    @Test
+    public void testDelete1() throws Exception {
+        client.delete().forPath("/test1");
+    }
+
+    @Test
+    public void testDelete2() throws Exception {
+        client.delete().deletingChildrenIfNeeded().forPath("/");
+    }
+
+    @Test
+    public void testDelete3() throws Exception {
+        client.delete().guaranteed().forPath("/");
+    }
+
+    @Test
+    public void testDelete4() throws Exception {
+        client.delete().inBackground(new BackgroundCallback() {
+            @Override
+            public void processResult(CuratorFramework curatorFramework, CuratorEvent curatorEvent) throws Exception {
+                System.out.println("啦啦啦");
+            }
+        }).forPath("/");
+    }
 
     @After
     public void close() {
@@ -80,4 +128,6 @@ public class CuratorTest {
             client.close();
         }
     }
+
+
 }

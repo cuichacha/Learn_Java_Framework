@@ -1,0 +1,22 @@
+#server:
+#  port: 8081
+
+student:
+  name: 啦啦啦
+  age: 0
+
+something1: 嘿嘿嘿
+
+something2: 嘟嘟嘟
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.134.2:3306/db_springboot
+    username: root
+    password: password
+
+mybatis:
+  mapper-locations: classpath:UserDao.xml
+  type-aliases-package: code.pojo
+

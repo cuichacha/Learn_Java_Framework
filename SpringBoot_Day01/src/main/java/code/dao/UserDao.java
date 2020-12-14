@@ -1,0 +1,15 @@
+package code.dao;
+
+import code.pojo.User;
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+
+//@Mapper
+@Repository
+public interface UserDao {
+//    @Select("select * from user")
+    public abstract List<User> findAll();
+}

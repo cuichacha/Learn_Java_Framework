@@ -39,19 +39,31 @@ public class CuratorWatcherTest {
 //            }
 //        });
 
-        CuratorCacheBuilder builder = CuratorCache.builder(client, "/");
-        CuratorCache build = builder.build();
+//        CuratorCacheBuilder builder = CuratorCache.builder(client, "/");
+//        CuratorCache build = builder.build();
+//        build.listenable().addListener(new CuratorCacheListener() {
+//            @Override
+//            public void event(Type type, ChildData childData, ChildData childData1) {
+//                System.out.println(type);
+//                System.out.println(childData);
+////                System.out.println(childData1);
+//                System.out.println(Arrays.toString(childData.getData()));
+////                System.out.println(Arrays.toString(childData1.getData()));
+//                System.out.println("啦啦啦");
+//            }
+//        });
+//        build.start();
+
+        CuratorCache build = CuratorCache.builder(client, "/").build();
         build.listenable().addListener(new CuratorCacheListener() {
             @Override
             public void event(Type type, ChildData childData, ChildData childData1) {
                 System.out.println(type);
                 System.out.println(childData);
-//                System.out.println(childData1);
                 System.out.println(Arrays.toString(childData.getData()));
-//                System.out.println(Arrays.toString(childData1.getData()));
-                System.out.println("啦啦啦");
             }
         });
+
         build.start();
 
 //        nodeCache.start();
