@@ -7,6 +7,7 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
+//@Component("student")
 @Component
 @ConfigurationProperties(prefix = "student")
 public class Student {
