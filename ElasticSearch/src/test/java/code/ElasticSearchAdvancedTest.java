@@ -1,11 +1,9 @@
 package code;
 
 import code.domain.Goods;
-import code.mapper.GoodsMapper;
 import code.service.GoodsService;
 import code.utils.ElasticSearchUtil;
 import com.alibaba.fastjson.JSON;
-import org.elasticsearch.action.DocWriteRequest;
 import org.elasticsearch.action.bulk.BulkItemResponse;
 import org.elasticsearch.action.bulk.BulkRequest;
 import org.elasticsearch.action.bulk.BulkResponse;
@@ -16,14 +14,22 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.action.update.UpdateRequest;
 import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
+import org.elasticsearch.common.text.Text;
 import org.elasticsearch.common.xcontent.XContentType;
-import org.elasticsearch.index.query.PrefixQueryBuilder;
-import org.elasticsearch.index.query.QueryBuilder;
-import org.elasticsearch.index.query.QueryBuilders;
-import org.elasticsearch.index.query.WildcardQueryBuilder;
+import org.elasticsearch.index.query.*;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
+import org.elasticsearch.search.aggregations.Aggregation;
+import org.elasticsearch.search.aggregations.AggregationBuilder;
+import org.elasticsearch.search.aggregations.AggregationBuilders;
+import org.elasticsearch.search.aggregations.Aggregations;
+import org.elasticsearch.search.aggregations.bucket.terms.Terms;
+import org.elasticsearch.search.aggregations.bucket.terms.TermsAggregationBuilder;
+import org.elasticsearch.search.aggregations.metrics.Max;
+import org.elasticsearch.search.aggregations.metrics.MaxAggregationBuilder;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -156,15 +162,113 @@ public class ElasticSearchAdvancedTest {
     @Test
     public void test6() throws IOException {
         WildcardQueryBuilder wildcardQueryBuilder = QueryBuilders.wildcardQuery("title", "华*");
-        elasticSearchUtil.getQueryBuilders("goods", wildcardQueryBuilder, 1);
+        elasticSearchUtil.query("goods", wildcardQueryBuilder, 1);
 //        ElasticSearchUtil.getQueryBuilders("goods", wildcardQueryBuilder, 1);
     }
 
     @Test
     public void test7() throws IOException {
         PrefixQueryBuilder prefixQueryBuilder = QueryBuilders.prefixQuery("title", "三");
-        elasticSearchUtil.getQueryBuilders("goods", prefixQueryBuilder, 1);
+        elasticSearchUtil.query("goods", prefixQueryBuilder, 1);
     }
 
+    @Test
+    public void test8() throws IOException {
+        RangeQueryBuilder rangeQueryBuilder = QueryBuilders.rangeQuery("price");
+        rangeQueryBuilder.gte(2000);
+        rangeQueryBuilder.lte(3000);
+        elasticSearchUtil.query("goods", rangeQueryBuilder, 1);
+    }
 
+    @Test
+    public void test9() throws IOException {
+        QueryStringQueryBuilder queryStringQueryBuilder = QueryBuilders.queryStringQuery("华为手机").field("title").field("brandName").defaultOperator(Operator.AND);
+        elasticSearchUtil.query("goods", queryStringQueryBuilder, 1);
+    }
+
+    @Test
+    public void test10() throws IOException {
+        BoolQueryBuilder boolQueryBuilder = QueryBuilders.boolQuery();
+//        MatchQueryBuilder matchQueryBuilder1 = QueryBuilders.matchQuery("brandName", "三星");
+//        boolQueryBuilder.must(matchQueryBuilder1);
+        MatchQueryBuilder matchQueryBuilder2 = QueryBuilders.matchQuery("title", "手机");
+        boolQueryBuilder.filter(matchQueryBuilder2);
+        RangeQueryBuilder rangeQueryBuilder = QueryBuilders.rangeQuery("price");
+        rangeQueryBuilder.gte(2000);
+        rangeQueryBuilder.lte(3000);
+        boolQueryBuilder.filter(rangeQueryBuilder);
+        elasticSearchUtil.query("goods", boolQueryBuilder, 10);
+    }
+
+    @Test
+    public void test11() throws IOException {
+        SearchRequest searchRequest = new SearchRequest("goods");
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        AggregationBuilder aggregationBuilder = AggregationBuilders.max("max_price").field("price");
+        searchSourceBuilder.aggregation(aggregationBuilder);
+        searchRequest.source(searchSourceBuilder);
+        SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
+        Aggregations aggregations = searchResponse.getAggregations();
+        Map<String, Aggregation> stringAggregationMap = aggregations.asMap();
+        Max max_price = (Max) stringAggregationMap.get("max_price");
+        double value = max_price.getValue();
+        System.out.println(value);
+    }
+
+    @Test
+    public void test12() throws IOException {
+        MaxAggregationBuilder maxAggregationBuilder = AggregationBuilders.max("max_price").field("price");
+        Map<String, Aggregation> stringAggregationMap = elasticSearchUtil.query("goods", maxAggregationBuilder);
+        Max max_price = (Max) stringAggregationMap.get("max_price");
+        double value = max_price.getValue();
+        System.out.println(value);
+    }
+
+    @Test
+    public void test13() throws IOException {
+        TermsAggregationBuilder termsAggregationBuilder = AggregationBuilders.terms("good_brands").field("brandName").size(20);
+        Map<String, Aggregation> stringAggregationMap = elasticSearchUtil.query("goods", termsAggregationBuilder);
+        Terms good_brands = (Terms) stringAggregationMap.get("good_brands");
+        List<? extends Terms.Bucket> buckets = good_brands.getBuckets();
+        for (Terms.Bucket bucket : buckets) {
+            System.out.println(bucket.getKey());
+            System.out.println(bucket.getDocCount());
+        }
+    }
+
+    @Test
+    public void test14() throws IOException {
+        MatchQueryBuilder matchQueryBuilder = QueryBuilders.matchQuery("title", "手机");
+        TermsAggregationBuilder termsAggregationBuilder = AggregationBuilders.terms("good_brands").field("brandName").size(20);
+        Map<String, Aggregation> stringAggregationMap = elasticSearchUtil.query("goods", matchQueryBuilder, termsAggregationBuilder);
+        Terms good_brands = (Terms) stringAggregationMap.get("good_brands");
+        List<? extends Terms.Bucket> buckets = good_brands.getBuckets();
+        for (Terms.Bucket bucket : buckets) {
+            System.out.println(bucket.getKey());
+            System.out.println(bucket.getDocCount());
+        }
+    }
+
+    @Test
+    public void test15() throws IOException {
+        SearchRequest searchQuest = new SearchRequest("goods");
+        SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
+        QueryBuilder queryBuilder = QueryBuilders.matchQuery("title", "手机");
+        searchSourceBuilder.query(queryBuilder);
+        HighlightBuilder highlightBuilder = new HighlightBuilder();
+        highlightBuilder.field("title");
+        highlightBuilder.preTags("<font color='red'>");
+        highlightBuilder.postTags("</font>");
+        searchSourceBuilder.highlighter(highlightBuilder);
+        searchQuest.source(searchSourceBuilder);
+        SearchResponse searchResponse = restHighLevelClient.search(searchQuest, RequestOptions.DEFAULT);
+        SearchHits searchHits = searchResponse.getHits();
+        SearchHit[] hits = searchHits.getHits();
+        for (SearchHit hit : hits) {
+            Map<String, HighlightField> highlightFields = hit.getHighlightFields();
+            HighlightField highlightField = highlightFields.get("title");
+            Text[] fragments = highlightField.fragments();
+            System.out.println(fragments[0]);
+        }
+    }
 }

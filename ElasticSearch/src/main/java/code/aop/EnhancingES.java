@@ -32,12 +32,13 @@ public class EnhancingES {
     }
 
     @Around(value = "pointCut()")
-    public void countTime(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+    public void query(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
 
         SearchRequest searchRequest = new SearchRequest("goods");
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
         QueryBuilder queryBuilder = (QueryBuilder) proceedingJoinPoint.proceed();
         sourceBuilder.query(queryBuilder);
+        sourceBuilder.size(1);
         searchRequest.source(sourceBuilder);
         SearchResponse searchResponse = restHighLevelClient.search(searchRequest, RequestOptions.DEFAULT);
         SearchHits searchHits = searchResponse.getHits();
