@@ -20,13 +20,13 @@ import java.io.IOException;
 
 @Component
 @Aspect
-public class EnhancingES {
+public class EnhancingESQuery {
 
     @Qualifier("getRestHighLevelClient")
     @Autowired
     RestHighLevelClient restHighLevelClient;
 
-    @Pointcut("execution(* *.enhancedes.*.*(..))")
+    @Pointcut("execution(* *.enhancedes.EnhancedESQueryTest.*(..))")
     public void pointCut() {
 
     }
