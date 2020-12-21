@@ -13,8 +13,14 @@ public class Consumer {
         connectionFactory.setVirtualHost("/test1");
         connectionFactory.setUsername("root");
         connectionFactory.setPassword("password");
+        // 获取连接
         Connection connection = connectionFactory.newConnection();
+        // 获取管道
         Channel channel = connection.createChannel();
+        /*
+            声明队列，第一个变量为队列名
+            不需要声明交换机，因为工作模式，SimpleQueue使用默认交换机
+         */
         channel.queueDeclare("simple_queue", true, false, false, null);
         DefaultConsumer defaultConsumer = new DefaultConsumer(channel){
             @Override
@@ -22,6 +28,7 @@ public class Consumer {
 
             }
         };
+        // 消费请求，只需要队列名称，因为消费者与队列直接联系
         channel.basicConsume("simple_queue", true, defaultConsumer);
     }
 }
