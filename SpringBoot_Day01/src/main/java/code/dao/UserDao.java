@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 //@Mapper
-@Repository
+//@Repository
 public interface UserDao {
 //    @Select("select * from user")
     public abstract List<User> findAll();
