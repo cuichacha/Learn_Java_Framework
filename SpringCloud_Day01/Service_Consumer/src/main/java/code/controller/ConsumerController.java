@@ -42,4 +42,21 @@ public class ConsumerController {
         String forObject = restTemplate.getForObject("http://" + host + ":" + port + "/test", String.class);
         return forObject;
     }
+
+    @GetMapping("test3")
+    public String controlConsumer3() {
+
+        List<ServiceInstance> instances = discoveryClient.getInstances("service-provider");
+        if (instances == null || instances.isEmpty()) {
+            return null;
+        }
+
+//        ServiceInstance serviceInstance = instances.get(0);
+//        String host = serviceInstance.getHost();
+//        System.out.println(host);
+//        int port = serviceInstance.getPort();
+
+        String forObject = restTemplate.getForObject("http://service-provider/test", String.class);
+        return forObject;
+    }
 }

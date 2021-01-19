@@ -20,6 +20,8 @@
         <module>Service_Consumer</module>
         <module>Eureka_Server1</module>
         <module>Eureka_Server2</module>
+        <module>Nacos_Provider</module>
+        <module>Nacos_Consumer</module>
 
     </modules>
 
