@@ -9,7 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class GatewayController {
 
     @GetMapping("/method1")
-    public String method1() {
+    public String method1(String username) {
+        System.out.println(username);
         return "123";
     }
 }
